@@ -92,6 +92,10 @@ a.mas-jugado{
     transition: border-width 0.3s;
 }
 
+p.partidasCard {
+    animation: golden-gray-border-text 4s linear infinite;
+}
+
 /* Estilos del cartelito */
 .badge {
     position: absolute;

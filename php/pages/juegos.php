@@ -141,7 +141,7 @@ require_once "../functions/db.php";
                             }
                             foreach ($partidasPorJuego as $juegoId => $partidas) {
                                 if($juegoId == $juego["id"]) {
-                                    echo "<p class='mb-3 text-muted'><small>" . count($partidas) . " partidas actualmente.</small></p>";
+                                    echo "<p class='mb-3 partidasCard'><small>" . count($partidas) . " partidas actualmente.</small></p>";
                                 }
                             }
                         echo "<p class='card-text flex-grow-1 mb-3 text-start'>" . $juego["descripcion"] . "</p>";

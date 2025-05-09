@@ -86,7 +86,7 @@ if (!isset($_GET["info"])) header("Location: ../../partidas_disponibles.php?falt
             </div>
         </nav>
         <div class="container-fluid mt-3 pt-5 pb-2 contHeader">
-            <h1 class="pt-3 text-light">Infromación de la Partida</h1>
+            <h1 class="pt-3 text-light">Información de la Partida</h1>
             <p class="text-light">Aquí encontrarás toda la información sobre la partida.</p>
         </div>
     </header>
