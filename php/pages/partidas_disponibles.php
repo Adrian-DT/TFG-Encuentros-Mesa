@@ -179,9 +179,17 @@ require_once "../functions/funciones_usuario.php";
                                                 <?php
                                                 // Si no estas logueado muestras las opciones, pero redirijes a login
                                                 if(!isset($_SESSION["id"])) {
-                                                    echo "<td>" . $partida["num_participantes"] .  "/" . $partida["max_j"] . "</td>
-                                                    <td><a class='text-primary' href='../pages/login.php'><i class='bi bi-person-plus'></i></a></td>
-                                                    <td></td>";
+                                                    if($partida["num_participantes"] < $partida["max_j"]) {
+                                                        echo "<td>" . $partida["num_participantes"] .  "/" . $partida["max_j"] . "</td>
+                                                                <td><a class='text-primary' href='../pages/login.php'><i class='bi bi-person-plus'></i></a></td>
+                                                                <td></td>
+                                                                <td><a class='text-primary' href='../pages/info_partida.php?info=" . $partida["id_partida"] . "'><i class='bi bi-info-square text-info'></i></a></td>";
+                                                    } else {
+                                                        echo " <td>" . $partida["num_participantes"] .  "/" . $partida["max_j"] . "</td>  
+                                                                <td class='text-danger'>Partida llena</td>
+                                                                <td><a class='text-primary' href='../pages/info_partida.php?info=" . $partida["id_partida"] . "'><i class='bi bi-info-square text-info'></i></a></td>";
+                                                    }
+                                                    
                                                 } else {
                                                     // Compruebo si existe el usuario participando en esa partida
                                                     $existe = user_partida_exist($partida["id_partida"], $_SESSION["id"]);
@@ -203,7 +211,7 @@ require_once "../functions/funciones_usuario.php";
                                                     <td><a class='text-primary' href='../pages/info_partida.php?info=" . $partida["id_partida"] . "'><i class='bi bi-info-square text-info'></i></a></td>";
                                                     } else if ($partida["num_participantes"] == $partida["max_j"]) {
                                                         echo " <td>" . $partida["num_participantes"] .  "/" . $partida["max_j"] . "</td>  
-                                                    <td class='text-success'>Partida llena</td>
+                                                    <td class='text-danger'>Partida llena</td>
                                                     <td><a class='text-primary' href='../pages/info_partida.php?info=" . $partida["id_partida"] . "'><i class='bi bi-info-square text-info'></i></a></td>";
                                                     }
                                                 }
