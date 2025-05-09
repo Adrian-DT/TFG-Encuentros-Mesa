@@ -125,7 +125,6 @@ require_once "../functions/funciones_usuario.php";
                             <input class="form-control me-2" id="inputCriterio" name="criterio" type="search" placeholder="Buscar criterio" aria-label="Search">
                         </form>
                         <a href="../pages/registro_partidas.php" class="btn btn-dark px-4">Registrar partida</a>
-                        <p class="my-auto"><?php echo contar_partidas_disponibles_totales() . " partidas disponibles." ?></p>
                     </div>
                     <div id="juegos-container"
                         class="row gx-4 gx-lg-5 row-cols-1 row-sm-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center text-center mb-5">
