@@ -1,0 +1,7 @@
+{
+    "name": "adrian/registros_de_mesa",
+    "description": "PHPMailer",
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    }
+}
