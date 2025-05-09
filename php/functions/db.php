@@ -117,7 +117,7 @@ function mostrar_partidas_disponiblesV2()
                             LEFT JOIN comentario AS e ON d.id = e.participacion -- Usamos LEFT JOIN para no perder participaciones sin comentarios
                             WHERE a.fecha_partida >= CURDATE() -- Con CURDATE solo hacemos referencia a la fecha y no a la hora
                             GROUP BY a.id
-                            ORDER BY a.id DESC;");
+                            ORDER BY a.fecha_partida ASC;");
         $result = $result->fetchAll(PDO::FETCH_ASSOC);
 
         //Cerramos la base de datos
@@ -166,7 +166,7 @@ function mostrar_partidas_pendientes($id_usuario)
                                 AND d2.id_usuario = $id_usuario
                             )
                             GROUP BY a.id
-                            ORDER BY a.id DESC;");
+                            ORDER BY a.fecha_partida ASC;");
         $result = $result->fetchAll(PDO::FETCH_ASSOC);
 
         //Cerramos la base de datos
