@@ -135,3 +135,34 @@ img#img-juego-izq {
     border-radius: 400px;
     border: 2px solid black;
 }
+
+/* Notificaciones */
+header div.notificacion{
+    position: absolute;
+    z-index: 2;
+    top: 15%;
+    left: 80%;
+    min-width: 200px;
+    height: 90px;
+    border: 2px white solid;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    background-color: rgba(79, 68, 68, 0.915);
+    color: white;
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+header div.notificacion div.aspa{
+    float: right;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+header div.notificacion div.aspa:hover {
+    cursor: pointer;
+}
+
+header div.notificacion p {
+    position: absolute;
+    margin: 10%;
+}

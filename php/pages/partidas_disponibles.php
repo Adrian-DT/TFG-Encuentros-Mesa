@@ -87,43 +87,46 @@ require_once "../functions/funciones_usuario.php";
             <h1 class="pt-3 text-light">Partidas Disponibles</h1>
             <p class="text-light">Aquí encontrarás las partidas disponibles creadas por usuarios a las que poder unirte.</p>
         </div>
-        <?php 
-        
-            if(isset($_GET["partida"])){
-                switch ($_GET["partida"]) {
-                    case "registrada":
+        <?php
 
-                        break;
-                    case "no_registrada":
-
-                        break;
-                    case "editada":
-
-                        break;
-                    case "no_editada":
-
-                        break;
-                    case "eliminada":
-
-                        break;
-                    case "no_eliminada":
-
-                        break;
-                    case "participa":
-
-                        break;
-                    case "no_participa":
-
-                        break;
-                    case "dejar_participar":
-                        
-                        break;
-                    case "no_dejar_participar":
-
-                        break;
-                }
+        if (isset($_GET["partida"])) {
+            echo "<div class='notificacion'>
+                        <div class='aspa'>x</div>";
+            switch ($_GET["partida"]) {
+                case "registrada":
+                    echo "<p>Partida registrada con éxito.</p>";
+                    break;
+                case "no_registrada":
+                    echo "<p>No pudo registrarse la partida.</p>";
+                    break;
+                case "editada":
+                    echo "<p>Partida editada con éxito.</p>";
+                    break;
+                case "no_editada":
+                    echo "<p>No pudo editarse la partida.</p>";
+                    break;
+                case "eliminada":
+                    echo "<p>Partida eliminada con éxito.</p>";
+                    break;
+                case "no_eliminada":
+                    echo "<p>No pudo eliminarse la partida.</p>";
+                    break;
+                case "participa":
+                    echo "<p>Te has apuntado con éxito a la partida.</p>";
+                    break;
+                case "no_participa":
+                    echo "<p>No es posible apuntarse a la partida.</p>";
+                    break;
+                case "dejar_participar":
+                    echo "<p>Te has salido con éxito de la partida.</p>";
+                    break;
+                case "no_dejar_participar":
+                    echo "<p>No ha sido posible salir de la partida.</p>";
+                    break;
             }
-        
+            echo "</div>";
+        }
+
         ?>
     </header>
     <main class="container-fluid contcard">
@@ -148,7 +151,7 @@ require_once "../functions/funciones_usuario.php";
                                         if (!in_array($juego["id_juego"], $repetidos)) {
                                             $repetidos[] += $juego["id_juego"];
                                             // En caso de que hayamos legado mediante la página de juegos, con un $_GET, filtramos directamente por ese juego, las partida disponibles
-                                            if(isset($_GET["id_juego"]) && $juego["id_juego"] == $_GET["id_juego"]) {
+                                            if (isset($_GET["id_juego"]) && $juego["id_juego"] == $_GET["id_juego"]) {
                                                 echo "<option value='" . $juego["id_juego"] . "' selected>" . $juego["nombre_juego"] . "</option>";
                                             } else {
                                                 echo "<option value='" . $juego["id_juego"] . "'>" . $juego["nombre_juego"] . "</option>";
@@ -216,8 +219,8 @@ require_once "../functions/funciones_usuario.php";
                                                 <td><?php echo $partida["comentarios"]; ?></td>
                                                 <?php
                                                 // Si no estas logueado muestras las opciones, pero redirijes a login
-                                                if(!isset($_SESSION["id"])) {
-                                                    if($partida["num_participantes"] < $partida["max_j"]) {
+                                                if (!isset($_SESSION["id"])) {
+                                                    if ($partida["num_participantes"] < $partida["max_j"]) {
                                                         echo "<td>" . $partida["num_participantes"] .  "/" . $partida["max_j"] . "</td>
                                                                 <td><a class='text-primary' href='../pages/login.php'><i class='bi bi-person-plus'></i></a></td>
                                                                 <td></td>
@@ -227,7 +230,6 @@ require_once "../functions/funciones_usuario.php";
                                                                 <td class='text-danger'>Partida llena</td>
                                                                 <td><a class='text-primary' href='../pages/info_partida.php?info=" . $partida["id_partida"] . "'><i class='bi bi-info-square text-info'></i></a></td>";
                                                     }
-                                                    
                                                 } else {
                                                     // Compruebo si existe el usuario participando en esa partida
                                                     $existe = user_partida_exist($partida["id_partida"], $_SESSION["id"]);
@@ -276,6 +278,7 @@ require_once "../functions/funciones_usuario.php";
         </ul>
     </footer>
     <script src="../../js/historial_partidas.js"></script>
+    <script src="../../js/notificaciones.js"></script>
 </body>
 
 </html>
