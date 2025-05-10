@@ -87,6 +87,44 @@ require_once "../functions/funciones_usuario.php";
             <h1 class="pt-3 text-light">Partidas Disponibles</h1>
             <p class="text-light">Aquí encontrarás las partidas disponibles creadas por usuarios a las que poder unirte.</p>
         </div>
+        <?php 
+        
+            if(isset($_GET["partida"])){
+                switch ($_GET["partida"]) {
+                    case "registrada":
+
+                        break;
+                    case "no_registrada":
+
+                        break;
+                    case "editada":
+
+                        break;
+                    case "no_editada":
+
+                        break;
+                    case "eliminada":
+
+                        break;
+                    case "no_eliminada":
+
+                        break;
+                    case "participa":
+
+                        break;
+                    case "no_participa":
+
+                        break;
+                    case "dejar_participar":
+                        
+                        break;
+                    case "no_dejar_participar":
+
+                        break;
+                }
+            }
+        
+        ?>
     </header>
     <main class="container-fluid contcard">
         <!-- Fondo oscuro -->

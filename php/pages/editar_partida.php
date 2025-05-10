@@ -146,7 +146,7 @@ foreach ($partidas as $partida) {
                         <textarea class="form-control w-100" rows="5" id="comentarios" name="comentarios" placeholder="Deje aquí su comentario..."><?php echo $comentarios ?></textarea>
                     </div>
                 </div>
-                <input type="text" name="id_partida" value="<?php echo $id_partida ?>">
+                <input type="text" name="id_partida" value="<?php echo $id_partida ?>" hidden>
                 <!-- Botón de envío -->
                 <div class="row g-3">
                     <div class="col-12">

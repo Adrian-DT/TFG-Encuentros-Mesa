@@ -64,31 +64,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["contacto"])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["registro_partida"])) {
     $registro_partida = registrarPartida($_SESSION["id"], $_POST['id_juego'], $_POST["lugar"], $_POST['fecha_partida'], $_POST['comentarios']);
     if ($registro_partida) {
-        header("Location: ../pages/partidas_disponibles.php?registro_partida=correcto");
+        header("Location: ../pages/partidas_disponibles.php?partida=registrada");
     } else {
-        header("Location: ../pages/registro_partidas.php?registro_partida=error");
+        header("Location: ../pages/registro_partidas.php?partida=no_registrada");
     }
 }
 
-// TODO NO FUNCIONA, REVISAR
 // Control para editar una partida registrada
 if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["editar_partida"])) {
     $editar_partida = editarPartida($_POST["id_partida"], $_POST['id_juego'], $_POST['fecha_partida'], $_POST['comentarios']);
     var_dump($editar_partida);
-    // if ($editar_partida) {
-    //     header("Location: ../pages/historial_partidas.php?editar_partida=correcto");
-    // } else {
-    //     header("Location: ../pages/partidas_disponibles.php?editar_partida=error");
-    // }
+    if ($editar_partida) {
+        header("Location: ../pages/partidas_disponibles.php?partida=editada");
+    } else {
+        header("Location: ../pages/partidas_disponibles.php?partida=no_editada");
+    }
 }
 
 // Eliminamos un registro de partida y redirigimos con get para comprobar su ejecucción correctamente
 if (isset($_GET["eliminar"]) && isset($_SESSION["id"]) && $_SESSION["id"] == $_GET["user"]) {
     $result = eliminarPartida($_GET["eliminar"]);
     if ($result) {
-        header("Location: ../pages/partidas_disponibles.php?partida_eliminada=correcto");
+        header("Location: ../pages/partidas_disponibles.php?partida=eliminada");
     } else {
-        header("Location: ../pages/partidas_disponibles.php?partida_eliminada=error");
+        header("Location: ../pages/partidas_disponibles.php?partida=no_eliminada");
     }
 }
 
@@ -126,9 +125,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["eliminar_cuenta"])) {
 if (isset($_GET["participar"]) && isset($_SESSION["id"])) {
     $unirse_partida = unirse_partida($_GET["participar"], $_SESSION["id"]);
     if ($unirse_partida) {
-        header("Location: ../pages/partidas_disponibles.php?participar=correcto");
+        header("Location: ../pages/partidas_disponibles.php?partida=participa");
     } else {
-        header("Location: ../pages/partidas_disponibles.php?participar=error");
+        header("Location: ../pages/partidas_disponibles.php?partida=no_participa");
     }
 }
 
@@ -136,8 +135,8 @@ if (isset($_GET["participar"]) && isset($_SESSION["id"])) {
 if (isset($_GET["no_participar"]) && isset($_SESSION["id"])) {
     $salir_partida = salir_partida($_GET["no_participar"], $_SESSION["id"]);
     if ($salir_partida) {
-        header("Location: ../pages/partidas_disponibles.php?no_participar=correcto");
+        header("Location: ../pages/partidas_disponibles.php?partida=dejar_participar");
     } else {
-        header("Location: ../pages/partidas_disponibles.php?no_participar=error");
+        header("Location: ../pages/partidas_disponibles.php?partida=no_dejar_participar");
     }
 }
