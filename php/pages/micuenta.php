@@ -187,6 +187,7 @@ if (!isset($_SESSION["id"])) {
         </ul>
     </footer>
     <script src="../../js/micuenta.js"></script>
+    <script src="../../js/notificaciones.js"></script>
 </body>
 
 </html>

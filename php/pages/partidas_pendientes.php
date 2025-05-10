@@ -87,6 +87,45 @@ require_once "../functions/funciones_usuario.php";
             <h1 class="pt-3 text-light">Tus Próximas Partidas</h1>
             <p class="text-light">Aquí encontrarás las próximas partidas que te esperan.</p>
         </div>
+        <?php
+        if (isset($_GET["partida"])) {
+            echo "<div class='notificacion'>
+                        <div class='aspa'>x</div>";
+            switch ($_GET["partida"]) {
+                case "registrada":
+                    echo "<p>Partida registrada con éxito.</p>";
+                    break;
+                case "no_registrada":
+                    echo "<p>No pudo registrarse la partida.</p>";
+                    break;
+                case "editada":
+                    echo "<p>Partida editada con éxito.</p>";
+                    break;
+                case "no_editada":
+                    echo "<p>No pudo editarse la partida.</p>";
+                    break;
+                case "eliminada":
+                    echo "<p>Partida eliminada con éxito.</p>";
+                    break;
+                case "no_eliminada":
+                    echo "<p>No pudo eliminarse la partida.</p>";
+                    break;
+                case "participa":
+                    echo "<p>Te has apuntado con éxito a la partida.</p>";
+                    break;
+                case "no_participa":
+                    echo "<p>No es posible apuntarse a la partida.</p>";
+                    break;
+                case "dejar_participar":
+                    echo "<p>Te has salido con éxito de la partida.</p>";
+                    break;
+                case "no_dejar_participar":
+                    echo "<p>No ha sido posible salir de la partida.</p>";
+                    break;
+            }
+            echo "</div>";
+        }
+        ?>
     </header>
     <main class="container-fluid contcard">
         <!-- Fondo oscuro -->
@@ -120,7 +159,6 @@ require_once "../functions/funciones_usuario.php";
                             <input class="form-control me-2" id="inputCriterio" name="criterio" type="search" placeholder="Buscar criterio" aria-label="Search">
                         </form>
                         <a href="../pages/registro_partidas.php" class="btn btn-dark px-4">Registrar partida</a>
-                        <p class="my-auto"><?php echo contar_partidas_disponibles_totales_usuario($_SESSION["id"]) . " partidas disponibles." ?></p>
                     </div>
                     <div id="juegos-container"
                         class="row gx-4 gx-lg-5 row-cols-1 row-sm-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center text-center mb-5">
@@ -185,17 +223,17 @@ require_once "../functions/funciones_usuario.php";
                                                     // Si la partida no es tuya, te muextra la opción de unirte, si es tuya, la opción de editar o eliminar
                                                     if ($_SESSION["id"] != $partida["id_creador"] && $existe == FALSE && $partida["num_participantes"] < $partida["max_j"]) {
                                                         echo "<td>" . $partida["num_participantes"] .  "/" . $partida["max_j"] . "</td>
-                                                    <td><a class='text-primary' href='../functions/controlador_formularios.php?participar=" . $partida["id_partida"] . "'><i class='bi bi-person-plus'></i></a></td>
+                                                    <td><a class='text-primary' href='../functions/controlador_formularios.php?participar=" . $partida["id_partida"] . "&pagina=pendiente'><i class='bi bi-person-plus'></i></a></td>
                                                     <td><a class='text-primary' href='../pages/info_partida.php?info=" . $partida["id_partida"] . "'><i class='bi bi-info-square text-info'></i></a></td>";
                                                     } else if ($_SESSION["id"] != $partida["id_creador"] && $existe == TRUE) {
                                                         echo "<td>" . $partida["num_participantes"] .  "/" . $partida["max_j"] . "</td>
                                                     <td><i class='bi bi-check-square text-success'></i></td>
-                                                    <td><a class='text-primary' href='../functions/controlador_formularios.php?no_participar=" . $partida["id_partida"] . "'><i class='bi bi-arrow-bar-left text-danger'></i></a></td></td>
+                                                    <td><a class='text-primary' href='../functions/controlador_formularios.php?no_participar=" . $partida["id_partida"] . "&pagina=pendiente'><i class='bi bi-arrow-bar-left text-danger'></i></a></td></td>
                                                     <td><a class='text-primary' href='../pages/info_partida.php?info=" . $partida["id_partida"] . "'><i class='bi bi-info-square text-info'></i></a></td>";
                                                     } else if ($_SESSION["id"] == $partida["id_creador"]) {
                                                         echo "<td>" . $partida["num_participantes"] .  "/" . $partida["max_j"] . "</td>  
                                                     <td><a class='text-primary' href='../pages/editar_partida.php?id_partida=" . $partida['id_partida'] . "'><i class='bi bi-pencil-square'></i></a></td>
-                                                    <td><a class='text-danger' href='../functions/controlador_formularios.php?eliminar=" . $partida['id_partida'] . "&user=" . $_SESSION["id"] . "'><i class='bi bi-trash3'></i></a></td>
+                                                    <td><a class='text-danger' href='../functions/controlador_formularios.php?eliminar=" . $partida['id_partida'] . "&user=" . $_SESSION["id"] . "&pagina=pendiente'><i class='bi bi-trash3'></i></a></td>
                                                     <td><a class='text-primary' href='../pages/info_partida.php?info=" . $partida["id_partida"] . "'><i class='bi bi-info-square text-info'></i></a></td>";
                                                     } else if ($partida["num_participantes"] == $partida["max_j"]) {
                                                         echo " <td>" . $partida["num_participantes"] .  "/" . $partida["max_j"] . "</td>  
@@ -225,6 +263,7 @@ require_once "../functions/funciones_usuario.php";
         </ul>
     </footer>
     <script src="../../js/historial_partidas.js"></script>
+    <script src="../../js/notificaciones.js"></script>
 </body>
 
 </html>

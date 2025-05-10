@@ -126,7 +126,6 @@ require_once "../functions/funciones_usuario.php";
             }
             echo "</div>";
         }
-
         ?>
     </header>
     <main class="container-fluid contcard">

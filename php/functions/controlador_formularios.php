@@ -135,8 +135,16 @@ if (isset($_GET["participar"]) && isset($_SESSION["id"])) {
 if (isset($_GET["no_participar"]) && isset($_SESSION["id"])) {
     $salir_partida = salir_partida($_GET["no_participar"], $_SESSION["id"]);
     if ($salir_partida) {
-        header("Location: ../pages/partidas_disponibles.php?partida=dejar_participar");
+        if (isset($_GET["pagina"]) && $_GET["pagina"] == "pendiente") {
+            header("Location: ../pages/partidas_pendientes.php?partida=dejar_participar");
+        } else {
+            header("Location: ../pages/partidas_disponibles.php?partida=dejar_participar");
+        }
     } else {
-        header("Location: ../pages/partidas_disponibles.php?partida=no_dejar_participar");
+        if (isset($_GET["pagina"]) && $_GET["pagina"] == "pendiente") {
+            header("Location: ../pages/partidas_pendientes.php?partida=no_dejar_participar");
+        } else {
+            header("Location: ../pages/partidas_disponibles.php?partida=no_dejar_participar");
+        }
     }
 }
