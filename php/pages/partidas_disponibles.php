@@ -88,7 +88,6 @@ require_once "../functions/funciones_usuario.php";
             <p class="text-light">Aquí encontrarás las partidas disponibles creadas por usuarios a las que poder unirte.</p>
         </div>
         <?php
-
         if (isset($_GET["partida"])) {
             echo "<div class='notificacion'>
                         <div class='aspa'>x</div>";
@@ -221,7 +220,7 @@ require_once "../functions/funciones_usuario.php";
                                                 if (!isset($_SESSION["id"])) {
                                                     if ($partida["num_participantes"] < $partida["max_j"]) {
                                                         echo "<td>" . $partida["num_participantes"] .  "/" . $partida["max_j"] . "</td>
-                                                                <td><a class='text-primary' href='../pages/login.php'><i class='bi bi-person-plus'></i></a></td>
+                                                                <td><a class='text-primary' href='../pages/login.php?partida=apuntarse'><i class='bi bi-person-plus'></i></a></td>
                                                                 <td></td>
                                                                 <td><a class='text-primary' href='../pages/info_partida.php?info=" . $partida["id_partida"] . "'><i class='bi bi-info-square text-info'></i></a></td>";
                                                     } else {

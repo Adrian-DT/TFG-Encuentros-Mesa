@@ -95,9 +95,9 @@ if (isset($_GET["eliminar"]) && isset($_SESSION["id"]) && $_SESSION["id"] == $_G
 if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["modificar_datos"])) {
     $cambiar_datos = cambiarDatos($_POST["user_name"], $_POST["email"], $_SESSION["id"]);
     if ($cambiar_datos) {
-        header("Location: ../pages/micuenta.php?modificacion=exito");
+        header("Location: ../pages/micuenta.php?cuenta=datos_modificados");
     } else {
-        header("Location: ../pages/micuenta.php?modificacion=error");
+        header("Location: ../pages/micuenta.php?cuenta=datos_no_modificados");
     }
 }
 
@@ -105,19 +105,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["modificar_datos"])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["modificar_contraseña"])) {
     $cambiar_contraseña = cambiarContraseña($_SESSION["id"], $_POST["contraseña"], $_POST["nueva_contraseña"], $_POST["confirmacion_nueva_contraseña"]);
     if ($cambiar_contraseña) {
-        header("Location: ../pages/micuenta.php?modificacion=exito");
+        header("Location: ../pages/micuenta.php?cuenta=contraseña_modificada");
     } else {
-        header("Location: ../pages/micuenta.php?modificacion=error");
+        header("Location: ../pages/micuenta.php?cuenta=contraseña_no_modificada");
     }
 }
 
 // Control para eliminar la cuenta del usuario
 if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["eliminar_cuenta"])) {
-    $cambiar_contraseña = bajaUsuario($_SESSION["id"], $_POST["contraseña_eliminar_cuenta"], $_POST["repetir_contraseña_eliminar_cuenta"]);
-    if ($cambiar_contraseña) {
-        header("Location: ../pages/index.php?cuenta_eliminada=exito");
+    $baja = bajaUsuario($_SESSION["id"], $_POST["contraseña_eliminar_cuenta"], $_POST["repetir_contraseña_eliminar_cuenta"]);
+    if ($baja) {
+        header("Location: ../pages/index.php?cuenta=eliminada");
     } else {
-        header("Location: ../pages/micuenta.php?cuenta_eliminada=error");
+        header("Location: ../pages/micuenta.php?cuenta=no_eliminada");
     }
 }
 

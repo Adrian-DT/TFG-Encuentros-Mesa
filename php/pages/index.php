@@ -88,6 +88,14 @@ require_once "../functions/db.php";
                 <p class="text-light">Registra las partidas con tus amigos.</p>
             </div>
         </div>
+        <?php
+        if (isset($_GET["cuenta"]) && $_GET["cuenta"] == "eliminada") {
+            echo "<div class='notificacion'>
+                        <div class='aspa'>x</div>";
+            echo "<p>Cuenta eliminada correctamente.</p>";
+            echo "</div>";
+        }
+        ?>
     </header>
     <main id="index-main" class="container-fluid pb-5">
         <!-- Primera sección -->
@@ -141,6 +149,7 @@ require_once "../functions/db.php";
             </div>
         </ul>
     </footer>
+    <script src="../../js/notificaciones.js"></script>
 </body>
 
 </html>

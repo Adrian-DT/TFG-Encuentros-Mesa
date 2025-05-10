@@ -91,6 +91,30 @@ if (!isset($_SESSION["id"])) {
                 <p class="text-light">Registra las partidas con tus amigos.</p>
             </div>
         </div>
+        <?php
+        if (isset($_GET["cuenta"])) {
+            echo "<div class='notificacion'>
+                        <div class='aspa'>x</div>";
+            switch ($_GET["cuenta"]) {
+                case "datos_modificados":
+                    echo "<p>Información actualizada con éxito.</p>";
+                    break;
+                case "datos_no_modificados":
+                    echo "<p>No pudo modificarse la información.</p>";
+                    break;
+                case "contraseña_modificada":
+                    echo "<p>Contraseña modificada con éxito.</p>";
+                    break;
+                case "contraseña_no_modificada":
+                    echo "<p>No pudo modifcarse la contraseña.</p>";
+                    break;
+                case "no_eliminada":
+                    echo "<p>No pudo eliminarse la cuenta.</p>";
+                    break;
+            }
+            echo "</div>";
+        }
+        ?>
     </header>
     <main class="container-fluid">
         <section class="align-items-start mx-0 p-5">

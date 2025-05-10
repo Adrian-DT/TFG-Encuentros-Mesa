@@ -85,6 +85,14 @@
             <h1 class="pt-3 text-light">Registros de Mesa</h1>
             <p class="text-light">Inicia sesión para disfrutar de todas las ventajas que te ofrecemos.</p>
         </div>
+        <?php
+        if (isset($_GET["partida"])) {
+            echo "<div class='notificacion'>
+                        <div class='aspa'>x</div>";
+            echo "<p>Es necesario iniciar sesión.</p>";
+            echo "</div>";
+        }
+        ?>
     </header>
     <main class="mt-2 py-5 d-flex flex-column text-center justify-content-center">
         <h1 class="text-center py-2">Inicio de Sesión</h1>
@@ -119,6 +127,7 @@
             </div>
         </ul>
     </footer>
+    <script src="../../js/notificaciones.js"></script>
 </body>
 
 </html>
