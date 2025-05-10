@@ -381,7 +381,7 @@ function contar_partidas_disponibles_totales_usuario($id_usuario)
             SELECT COUNT(*) AS total 
             FROM partidas AS a
             JOIN participaciones AS d ON a.id = d.id_partida
-            WHERE fecha_partida >= NOW()
+            WHERE fecha_partida >= CURDATE()
             AND d.id_usuario = $id_usuario
         ");
 
@@ -476,7 +476,7 @@ function contar_partidas_usuario_vigentes($id_usuario)
             FROM participaciones 
             JOIN partidas ON participaciones.id_partida = partidas.id
             WHERE participaciones.id_usuario = ? 
-            AND partidas.fecha_partida >= NOW()
+            AND partidas.fecha_partida >= CURDATE()
         ");
 
         // Ejecutar con parámetros seguros
