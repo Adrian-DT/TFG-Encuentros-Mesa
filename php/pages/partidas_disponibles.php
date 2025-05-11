@@ -244,7 +244,7 @@ require_once "../functions/funciones_usuario.php";
                                                 if (!isset($_SESSION["id"])) {
                                                     if ($partida["num_participantes"] < $partida["max_j"]) {
                                                         echo "<td>" . $partida["num_participantes"] .  "/" . $partida["max_j"] . "</td>
-                                                                <td><a class='text-primary' href='../pages/login.php?partida=apuntarse'><i class='bi bi-person-plus'></i></a></td>
+                                                                <td><a class='text-primary tooltip-trigger' data-bs-toggle='tooltip' title='¡Únete a la partida!' href='../pages/login.php?partida=apuntarse'><i class='bi bi-person-plus'></i></a></td>
                                                                 <td></td>
                                                                 <td><a class='text-primary tooltip-trigger' data-bs-toggle='tooltip' title='Información de la partida' href='../pages/info_partida.php?info=" . $partida["id_partida"] . "'><i class='bi bi-info-square text-info'></i></a></td>";
                                                     } else {
