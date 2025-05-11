@@ -32,3 +32,10 @@ if (ocultar_notificacion != null) {
     }
     setTimeout(mostrarNotificacionCarritoAuto, 500);
 }
+
+// Tooltip iconos
+// Inicializa todos los tooltips en la página
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl);
+});

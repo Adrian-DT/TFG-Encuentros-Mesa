@@ -223,18 +223,18 @@ require_once "../functions/funciones_usuario.php";
                                                     // Si la partida no es tuya, te muextra la opción de unirte, si es tuya, la opción de editar o eliminar
                                                     if ($_SESSION["id"] != $partida["id_creador"] && $existe == FALSE && $partida["num_participantes"] < $partida["max_j"]) {
                                                         echo "<td>" . $partida["num_participantes"] .  "/" . $partida["max_j"] . "</td>
-                                                    <td><a class='text-primary' href='../functions/controlador_formularios.php?participar=" . $partida["id_partida"] . "&pagina=pendiente'><i class='bi bi-person-plus'></i></a></td>
-                                                    <td><a class='text-primary' href='../pages/info_partida.php?info=" . $partida["id_partida"] . "'><i class='bi bi-info-square text-info'></i></a></td>";
+                                                    <td><a class='text-primary tooltip-trigger' data-bs-toggle='tooltip' title='¡Únete a la partida!' href='../functions/controlador_formularios.php?participar=" . $partida["id_partida"] . "&pagina=pendiente'><i class='bi bi-person-plus'></i></a></td>
+                                                    <td><a class='text-primary tooltip-trigger' data-bs-toggle='tooltip' title='Información de la partida' href='../pages/info_partida.php?info=" . $partida["id_partida"] . "'><i class='bi bi-info-square text-info'></i></a></td>";
                                                     } else if ($_SESSION["id"] != $partida["id_creador"] && $existe == TRUE) {
                                                         echo "<td>" . $partida["num_participantes"] .  "/" . $partida["max_j"] . "</td>
                                                     <td><i class='bi bi-check-square text-success'></i></td>
-                                                    <td><a class='text-primary' href='../functions/controlador_formularios.php?no_participar=" . $partida["id_partida"] . "&pagina=pendiente'><i class='bi bi-arrow-bar-left text-danger'></i></a></td></td>
-                                                    <td><a class='text-primary' href='../pages/info_partida.php?info=" . $partida["id_partida"] . "'><i class='bi bi-info-square text-info'></i></a></td>";
+                                                    <td><a class='text-primary tooltip-trigger' data-bs-toggle='tooltip' title='Salir de la partida' href='../functions/controlador_formularios.php?no_participar=" . $partida["id_partida"] . "&pagina=pendiente'><i class='bi bi-arrow-bar-left text-danger'></i></a></td></td>
+                                                    <td><a class='text-primary tooltip-trigger' data-bs-toggle='tooltip' title='Información de la partida' href='../pages/info_partida.php?info=" . $partida["id_partida"] . "'><i class='bi bi-info-square text-info'></i></a></td>";
                                                     } else if ($_SESSION["id"] == $partida["id_creador"]) {
                                                         echo "<td>" . $partida["num_participantes"] .  "/" . $partida["max_j"] . "</td>  
-                                                    <td><a class='text-primary' href='../pages/editar_partida.php?id_partida=" . $partida['id_partida'] . "'><i class='bi bi-pencil-square'></i></a></td>
-                                                    <td><a class='text-danger' href='../functions/controlador_formularios.php?eliminar=" . $partida['id_partida'] . "&user=" . $_SESSION["id"] . "&pagina=pendiente'><i class='bi bi-trash3'></i></a></td>
-                                                    <td><a class='text-primary' href='../pages/info_partida.php?info=" . $partida["id_partida"] . "'><i class='bi bi-info-square text-info'></i></a></td>";
+                                                    <td><a class='text-primary tooltip-trigger' data-bs-toggle='tooltip' title='Editar partida' href='../pages/editar_partida.php?id_partida=" . $partida['id_partida'] . "'><i class='bi bi-pencil-square'></i></a></td>
+                                                    <td><a class='text-danger tooltip-trigger' data-bs-toggle='tooltip' title='Eliminar partida' href='../functions/controlador_formularios.php?eliminar=" . $partida['id_partida'] . "&user=" . $_SESSION["id"] . "&pagina=pendiente'><i class='bi bi-trash3'></i></a></td>
+                                                    <td><a class='text-primary tooltip-trigger' data-bs-toggle='tooltip' title='Información de la partida' href='../pages/info_partida.php?info=" . $partida["id_partida"] . "'><i class='bi bi-info-square text-info'></i></a></td>";
                                                     } else if ($partida["num_participantes"] == $partida["max_j"]) {
                                                         echo " <td>" . $partida["num_participantes"] .  "/" . $partida["max_j"] . "</td>  
                                                     <td class='text-success'>Partida llena</td>";
