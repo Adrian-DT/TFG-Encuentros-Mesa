@@ -101,8 +101,8 @@ require_once "../functions/db.php";
         <!-- Primera sección -->
         <article class="row px-3 px-md-5 mt-5 mb-4 art-index">
             <section class="col-12 col-md-6 order-2 order-md-1 mt-4 mt-md-0">
-                <h4 class="mb-3">Comienza un seguimiento de las partidas con tus amigos</h4>
-                <p class="mb-4">Vuelves a quedar con tus amigos, esos frikis de siempre, y en mitad del debate de elegir un juego para una nueva partida, resulta que nadie se acuerda de aquella memorable partida en la que ocurrió aquella impresionante remontada. Ahora podrás almacenar la información de tus partidas, y también añadir aquella vez que pillaste al que iba ganando, haciendo trampas.</p>
+                <h4 class="mb-3">Conoce a otros jugadores, descubre nuevos juegos</h4>
+                <p class="mb-4">Bienvenido a Registros de Mesa, tu lugar de encuentro con otros jugadores de juegos de mesa con los que compartir aficciones. Forma parte de una comunidad en constante crecimiento, apúntate a partidas de otros usuarios, crea las tuyas propias y disfruta de partidas memorables.</p>
                 <a href="../pages/registro.php" class="btn btn-dark px-4">Comenzar</a>
             </section>
             <section class="col-12 col-md-6 order-1 order-md-2 mb-4 mb-md-0">
@@ -120,8 +120,8 @@ require_once "../functions/db.php";
                 </video>
             </section>
             <section class="col-12 col-md-6 mt-4 mt-md-0">
-                <h4 class="mb-3">Realiza comentarios sobre tus partidas</h4>
-                <p class="mb-4">Anota comentarios sobre la partida, así podrás conocer al detalle en tu historial, lo que ocurrió durante esa partida. ¿Quién no quiere recordarle a los demás aquella manera tan particular que tuviste para ganar?</p>
+                <h4 class="mb-3">Organiza una partida</h4>
+                <p class="mb-4">¿Tienes un juego al que es dificil quitarle el polvo? Seguramente haya gente en la comunidad dispuesta a ayudarte a hacerlo. Crea una partida de tu juego favorito, indica el día, el lugar y añade comentarios con la hora o información relevante para la realización de la partida. ¡Ya solo queda esperar que la gente se apunte y llegue el momento!</p>
             </section>
         </article>
 
