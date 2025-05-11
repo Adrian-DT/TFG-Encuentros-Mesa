@@ -88,6 +88,30 @@ require_once "../functions/funciones_usuario.php";
             <p class="text-light">Aquí encontrarás las partidas disponibles creadas por usuarios a las que poder unirte.</p>
         </div>
         <?php
+        $juegos = mostrar_partidas_disponiblesV2();
+
+        if (isset($_GET["id_juego"])) {
+            $id_juego_buscado = $_GET["id_juego"];
+            $no_disponible = true; // Asumimos inicialmente que no hay partidas
+
+            foreach ($juegos as $juego) {
+                // Verifica que el ID del juego esté en los datos de la partida
+                // Ajusta "id_juego" según la estructura real de tus datos
+                if (isset($juego['id_juego']) && $juego['id_juego'] == $id_juego_buscado) {
+                    $no_disponible = false;
+                    break; // Salimos del bucle al encontrar coincidencia
+                }
+            }
+            if ($no_disponible) {
+                echo "<div class='notificacion'>
+                    <div class='aspa'><i class='bi bi-x'></i></div>
+                        <p>No hay partidas de ese juego.</p>
+                    </div>";
+            }
+        }
+
+
+
         if (isset($_GET["partida"])) {
             echo "<div class='notificacion'>
                         <div class='aspa'>x</div>";
