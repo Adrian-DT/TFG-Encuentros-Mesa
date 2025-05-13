@@ -179,14 +179,14 @@ if (!isset($_SESSION["id"])) {
                                                     // Si eres el creador y la partida es anterior a la fecha actual, te permite establecer ganador
                                                     if ($partida["id_creador"] == $_SESSION["id"] && $fecha_partida < $fecha_actual && $partida["ganador"] == NULL) {
                                                         $participantes = generar_select_participantes($partida["id_partida"]);
-                                                        echo "<select id='opcionesGanador' name='ganador'>
+                                                        echo "<select class='opcionesGanador' data-partida-id='" . $partida["id_partida"] . "'>
                                                                 <option value='default'>Selecciona ganador</option>";
                                                         foreach ($participantes as $participante) {
                                                             echo "<option value='" . $participante['user_name'] . "'>" . $participante['user_name'] . "</option>";
                                                         }
                                                         // Genero los input que mandarán el id partida
-                                                        echo "</select>
-                                                            <input type='hidden' id='partidaId' value=" . $partida["id_partida"] . ">";
+                                                        echo "</select>";
+                                                            // <input type='hidden' id='partidaId' value=" . $partida["id_partida"] . ">";
                                                     } else {
                                                         echo $partida["ganador"];
                                                     }

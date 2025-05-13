@@ -64,26 +64,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ------------------------------------------------------------------------------------------------------------------------
 
-    document.getElementById('opcionesGanador')?.addEventListener('change', function () {
-        const opcion = this.value;
-        const userGanador = document.getElementById('opcionesGanador').value;
-        const partidaId = document.getElementById('partidaId').value;
-        fetch('../functions/guardar_ganador.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                opcion: opcion,
-                usuario: userGanador,
-                partida: partidaId
+    document.addEventListener('change', function (event) {
+        // Verificar si el elemento cambiado es un select con la clase opcionesGanador
+        if (event.target && event.target.classList.contains('opcionesGanador')) {
+            const select = event.target;
+
+            // Obtener el id_partida desde el atributo data
+            const partidaId = select.dataset.partidaId;
+            const userGanador = select.value;
+
+            // Validación básica
+            if (!partidaId || userGanador === 'default') return;
+
+            // Enviar los datos al servidor
+            fetch('../functions/guardar_ganador.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    opcion: userGanador,
+                    usuario: userGanador,
+                    partida: partidaId
+                })
             })
-        })
-            .then(response => {
-                if (response.ok) {
-                    // Recargar la página después de guardar para que se muestre el value y no el select
-                    location.reload();
-                }
-            })
-            .catch(error => console.error('Error:', error));
+                .then(response => {
+                    if (response.ok) {
+                        // Puedes recargar la página o actualizar solo esta fila
+                        location.reload();
+                    }
+                })
+                .catch(error => console.error('Error al guardar:', error));
+        }
     });
 });
 
