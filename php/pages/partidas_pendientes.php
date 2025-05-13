@@ -2,6 +2,9 @@
 @session_start();
 require_once "../functions/db.php";
 require_once "../functions/funciones_usuario.php";
+if (!isset($_SESSION["id"])) {
+    header("Location: ../pages/login.php?log=necesario");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

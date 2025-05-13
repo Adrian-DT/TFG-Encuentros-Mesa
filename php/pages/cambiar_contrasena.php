@@ -2,7 +2,7 @@
 @session_start();
 // En caso de acceder sin usar un enlace de correo recibido que te coloca un $_GET, redirigimos a index para evitar errores
 if (!isset($_SESSION["email_cambio_contraseña"])) {
-    header("Location: ../pages/index.php");
+    header("Location: ../pages/index.php?acceso=denegado");
 }
 ?>
 <!DOCTYPE html>
