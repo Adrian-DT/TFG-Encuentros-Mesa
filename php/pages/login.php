@@ -86,7 +86,7 @@
             <p class="text-light">Inicia sesión para disfrutar de todas las ventajas que te ofrecemos.</p>
         </div>
         <?php
-        if (isset($_GET["partida"])) {
+        if (isset($_GET["partida"]) || isset($_GET["log"])) {
             echo "<div class='notificacion'>
                         <div class='aspa'>x</div>";
             echo "<p>Es necesario iniciar sesión.</p>";
