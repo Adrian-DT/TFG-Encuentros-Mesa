@@ -39,6 +39,11 @@ button#btnModificarDatos {
     display: none;
 }
 
+.table-fixed {
+    table-layout: fixed;
+    width: 100%;
+}
+
 /* Juegos */
 
 @keyframes golden-gray-border {

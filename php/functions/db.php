@@ -104,7 +104,7 @@ function mostrar_partidas_disponiblesV2()
                                 a.ganador,
                                 a.id_juego,
                                 a.lugar,
-                                DATE_FORMAT(a.fecha_partida,'%d/%m/%Y') AS fecha_partida,
+                                CONCAT(DATE_FORMAT(a.fecha_partida, '%H:%i'), '<br>', DATE_FORMAT(a.fecha_partida, '%d-%m-%Y')) AS fecha_partida,
                                 GROUP_CONCAT(e.texto SEPARATOR ' | ') AS comentarios, -- Agrupa comentarios
                                 b.nombre AS nombre_juego,
                                 b.max_jugadores AS max_j,
@@ -147,7 +147,7 @@ function mostrar_partidas_pendientes($id_usuario)
                                 a.ganador,
                                 a.id_juego,
                                 a.lugar,
-                                DATE_FORMAT(a.fecha_partida,'%d/%m/%Y') AS fecha_partida,
+                                CONCAT(DATE_FORMAT(a.fecha_partida, '%H:%i'), '<br>', DATE_FORMAT(a.fecha_partida, '%d-%m-%Y')) AS fecha_partida,
                                 GROUP_CONCAT(e.texto SEPARATOR ' | ') AS comentarios, -- Agrupa comentarios
                                 b.nombre AS nombre_juego,
                                 b.max_jugadores AS max_j,
@@ -195,7 +195,7 @@ function mostrar_partidas($id_creador)
                                     a.lugar, 
                                     a.ganador, 
                                     a.id_juego, 
-                                    DATE_FORMAT(a.fecha_partida,'%d/%m/%Y') AS fecha_partida, 
+                                    CONCAT(DATE_FORMAT(a.fecha_partida, '%H:%i'), '<br>', DATE_FORMAT(a.fecha_partida, '%d-%m-%Y')) AS fecha_partida, 
                                     e.texto AS comentarios, 
                                     b.nombre AS nombre_juego
                                 FROM partidas AS a
@@ -233,7 +233,7 @@ function mostrar_info_partida($id_partida)
                                     a.lugar, 
                                     a.ganador, 
                                     a.id_juego, 
-                                    DATE_FORMAT(a.fecha_partida,'%d/%m/%Y') AS fecha_partida, 
+                                    CONCAT(DATE_FORMAT(a.fecha_partida, '%H:%i'), '<br>', DATE_FORMAT(a.fecha_partida, '%d-%m-%Y')) AS fecha_partida, 
                                     e.texto AS comentarios, 
                                     b.nombre AS nombre_juego
                                 FROM partidas AS a
@@ -270,7 +270,7 @@ function historial_partidas($id_usuario) {
                                 a.id_juego,
                                 a.lugar,
                                 a.fecha_partida,
-                                DATE_FORMAT(a.fecha_partida,'%d/%m/%Y') AS fecha,
+                                CONCAT(DATE_FORMAT(a.fecha_partida, '%H:%i'), '<br>', DATE_FORMAT(a.fecha_partida, '%d-%m-%Y')) AS fecha,
                                 GROUP_CONCAT(e.texto SEPARATOR ' | ') AS comentarios,
                                 b.nombre AS nombre_juego,
                                 b.max_jugadores AS max_j,

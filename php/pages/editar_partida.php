@@ -3,7 +3,7 @@
 require_once "../functions/db.php";
 if (!isset($_SESSION["id"])) header("Location: ../pages/login.php?log=necesario");
 
-if (!isset($_GET["id_partida"])) header("Location: ../pages/historial_partidas.php?id_partida=necesario");
+if (!isset($_GET["id_partida"])) header("Location: ../pages/partidas_disponibles.php?id_partida=necesario");
 
 // Obtengo los datos de la partida para establecerlos en los values de los input del formulario
 $partidas = mostrar_partidas($_SESSION["id"]);
@@ -135,7 +135,7 @@ foreach ($partidas as $partida) {
                     </div>
                     <div class="col-md-3 col-12">
                         <label for="fecha_partida" class="form-label">Fecha de partida:</label>
-                        <input type="date" class="form-control w-100" id="fecha_partida" name="fecha_partida" value="<?php echo $fecha ?>" required>
+                        <input type="datetime-local" class="form-control w-100" id="fecha_partida" name="fecha_partida" value="<?php echo $fecha ?>" required>
                     </div>
                 </div>
 

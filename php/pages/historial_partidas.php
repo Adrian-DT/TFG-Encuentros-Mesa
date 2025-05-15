@@ -154,7 +154,7 @@ if (!isset($_SESSION["id"])) {
                                 </div>
 
                                 <!-- Mostrar tabla con todas las partidas del juego -->
-                                <table class='table table-hover table-sm mx-auto w-100 h-100 mb-5' id="<?php echo $juegoId; ?>" style='max-width: 900px;'>
+                                <table class='table table-hover table-sm mx-auto w-100 h-100 mb-5 table-fixed' id="<?php echo $juegoId; ?>" style='max-width: 900px;'>
                                     <thead>
                                         <tr>
                                             <th>Game Master</th>
@@ -168,7 +168,7 @@ if (!isset($_SESSION["id"])) {
                                     <tbody>
                                         <?php foreach ($partidas as $partida): ?>
                                             <tr>
-                                                <td><?php // TODO HAY QUE MOSTRAR TODAS LAS PARTIDAS EN LAS QUE PARTICIPA UN USUARIO EN EL HISTORIAL PARTIDAS
+                                                <td><?php
                                                     $game_master = game_master($partida["id_creador"]);
                                                     echo $game_master["user_name"] ?></td>
                                                 <td>
@@ -186,16 +186,16 @@ if (!isset($_SESSION["id"])) {
                                                         }
                                                         // Genero los input que mandarán el id partida
                                                         echo "</select>";
-                                                            // <input type='hidden' id='partidaId' value=" . $partida["id_partida"] . ">";
+                                                        // <input type='hidden' id='partidaId' value=" . $partida["id_partida"] . ">";
                                                     } else {
                                                         echo $partida["ganador"];
                                                     }
                                                     ?>
                                                 </td>
                                                 <td><?php
-                                                        // Función para mostrar los nombres de los participantes de la partida
-                                                        $participantes = mostrar_participantes($partida["id_partida"]);
-                                                        if ($participantes) echo $participantes;
+                                                    // Función para mostrar los nombres de los participantes de la partida
+                                                    $participantes = mostrar_participantes($partida["id_partida"]);
+                                                    if ($participantes) echo $participantes;
                                                     ?>
                                                 </td>
                                                 <td><?php echo $partida["lugar"] ?></td>

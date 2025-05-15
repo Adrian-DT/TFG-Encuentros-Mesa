@@ -119,7 +119,7 @@ if (!isset($_SESSION["id"])) {
                     </div>
                     <div class="col-md-3 col-12">
                         <label for="fecha_partida" class="form-label">Fecha de partida:</label>
-                        <input type="date" class="form-control w-100" id="fecha_partida" name="fecha_partida">
+                        <input type="datetime-local" class="form-control w-100" id="fecha_partida" name="fecha_partida">
                     </div>
                 </div>
 
