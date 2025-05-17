@@ -177,16 +177,18 @@ if (!isset($_SESSION["id"])) {
                                                     $fecha_partida = new DateTime($partida["fecha_partida"]);
                                                     $fecha_actual = new DateTime();
                                                     // Si eres el creador y la partida es anterior a la fecha actual, te permite establecer ganador
-                                                    if ($partida["id_creador"] == $_SESSION["id"] && $fecha_partida < $fecha_actual && $partida["ganador"] == NULL) {
+                                                    if ($partida["id_creador"] == $_SESSION["id"] && $fecha_partida < $fecha_actual) {
                                                         $participantes = generar_select_participantes($partida["id_partida"]);
-                                                        echo "<select class='opcionesGanador' data-partida-id='" . $partida["id_partida"] . "'>
-                                                                <option value='default'>Selecciona ganador</option>";
+                                                        echo "<select class='opcionesGanador' data-partida-id='" . $partida["id_partida"] . "'>";
+                                                        echo $partida["ganador"] === NULL
+                                                            ? "<option value='default' selected>Selecciona ganador</option>"
+                                                            : "<option value=" . htmlspecialchars($partida["ganador"]) . " selected>" . htmlspecialchars($partida["ganador"]) . "</option>";
                                                         foreach ($participantes as $participante) {
-                                                            echo "<option value='" . $participante['user_name'] . "'>" . $participante['user_name'] . "</option>";
+                                                            if ($participante["user_name"] != $partida["ganador"]) {
+                                                                echo "<option value='" . $participante['user_name'] . "'>" . $participante['user_name'] . "</option>";
+                                                            }
                                                         }
-                                                        // Genero los input que mandarán el id partida
                                                         echo "</select>";
-                                                        // <input type='hidden' id='partidaId' value=" . $partida["id_partida"] . ">";
                                                     } else {
                                                         echo $partida["ganador"];
                                                     }
