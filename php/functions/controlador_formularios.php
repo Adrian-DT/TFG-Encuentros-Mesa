@@ -74,11 +74,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["registro_partida"])) 
 if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["editar_partida"])) {
     $editar_partida = editarPartida($_POST["id_partida"], $_POST['id_juego'], $_POST['fecha_partida'], $_POST['comentarios'], $_POST["lugar"]);
     var_dump($editar_partida);
-    if ($editar_partida) {
-        header("Location: ../pages/partidas_disponibles.php?partida=editada");
-    } else {
-        header("Location: ../pages/partidas_disponibles.php?partida=no_editada");
-    }
+    // if ($editar_partida) {
+    //     header("Location: ../pages/partidas_disponibles.php?partida=editada");
+    // } else {
+    //     header("Location: ../pages/partidas_disponibles.php?partida=no_editada");
+    // }
 }
 
 // Eliminamos un registro de partida y redirigimos con get para comprobar su ejecucción correctamente

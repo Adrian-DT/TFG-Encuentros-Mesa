@@ -309,7 +309,7 @@ function editarPartida($id_partida, $id_juego, $fecha_partida, $comentarios, $lu
                             p.id_juego = ?,
                             p.fecha_partida = ?,
                             c.texto = ?,
-                            p.lugar
+                            p.lugar = ?
                             WHERE p.id = ?");
 
         $resultado = $query->execute(array($id_juego, $fecha_partida, $comentarios, $id_partida, $lugar));
@@ -323,7 +323,7 @@ function editarPartida($id_partida, $id_juego, $fecha_partida, $comentarios, $lu
         }
     } catch (PDOException $e) {
         $db = desconectar();
-        return FALSE;
+        return $e;
     }
 }
 
