@@ -283,7 +283,7 @@ function registrarPartida($id_creador, $id_juego, $lugar, $fecha_partida, $comen
 
 // TODO NO FUNCIONA, REVISAR
 // Función para editar una partida existente
-function editarPartida($id_partida, $id_juego, $fecha_partida, $comentarios) {
+function editarPartida($id_partida, $id_juego, $fecha_partida, $comentarios, $lugar) {
     // Contemplamos que la partida no pueda ser con una fecha posterior a la actual, ya que no podría haberse jugado
     // Pasamos los valores del argumento fecha a objeto DateTime
     $fecha_partidaComp = new DateTime($fecha_partida);
@@ -308,10 +308,11 @@ function editarPartida($id_partida, $id_juego, $fecha_partida, $comentarios) {
                             SET
                             p.id_juego = ?,
                             p.fecha_partida = ?,
-                            c.texto = ?
+                            c.texto = ?,
+                            p.lugar
                             WHERE p.id = ?");
 
-        $resultado = $query->execute(array($id_juego, $fecha_partida, $comentarios, $id_partida));
+        $resultado = $query->execute(array($id_juego, $fecha_partida, $comentarios, $id_partida, $lugar));
         if (!$resultado) {
             return "Fallo en la sentencia UPDATE";
             $db = desconectar();
