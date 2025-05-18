@@ -312,7 +312,7 @@ function editarPartida($id_partida, $id_juego, $fecha_partida, $comentarios, $lu
                             p.lugar = ?
                             WHERE p.id = ?");
 
-        $resultado = $query->execute(array($id_juego, $fecha_partida, $comentarios, $id_partida, $lugar));
+        $resultado = $query->execute(array($id_juego, $fecha_partida, $comentarios, $lugar, $id_partida));
         if (!$resultado) {
             return "Fallo en la sentencia UPDATE";
             $db = desconectar();
