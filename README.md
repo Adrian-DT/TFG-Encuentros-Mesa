@@ -56,14 +56,15 @@ js/
 php/
 ├── functions/
 
-│ ├── db.php # Conexión y consultas a la base de datos (db.php:3-11)
+  │ ├── db.php # Conexión y consultas a la base de datos (db.php:3-11)
 
-│ ├── funciones_usuario.php # Funciones de usuario (funciones_usuario.php:5-37)
+  │ ├── funciones_usuario.php # Funciones de usuario (funciones_usuario.php:5-37)
 
-│ └── PHPMailer.php # Envío de correos electrónicos
+  │ └── PHPMailer.php # Envío de correos electrónicos
 
-├── pages/
-│ └── *.php # Páginas del sistema: login, registro, partidas, etc.
+  ├── pages/
+
+  │ └── *.php # Páginas del sistema: login, registro, partidas, etc.
 
 index.php # Página principal (index.php:104-106)
 
