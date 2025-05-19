@@ -87,6 +87,15 @@ if (isset($_SESSION["id"])) header("Location: ../pages/registro_partidas.php");
             <h1 class="pt-3 text-light">Registros de Mesa</h1>
             <p class="text-light">Crea tu cuenta para empezar a registrar tus partidas.</p>
         </div>
+        <?php
+        if (isset($_GET["error"])) {
+        echo "<div class='notificacion'>
+            <div class='aspa'>x</div>";
+            echo "<p>" . $_GET["error"] . "</p>";
+            echo "
+        </div>";
+        }
+        ?>
     </header>
     <main class="mt-2 py-5">
         <h1 class="text-center py-2">Registro de Nuevo Usuario</h1>
@@ -122,6 +131,7 @@ if (isset($_SESSION["id"])) header("Location: ../pages/registro_partidas.php");
             </div>
         </ul>
     </footer>
+    <script src="../../js/notificaciones.js"></script>
 </body>
 
 </html>

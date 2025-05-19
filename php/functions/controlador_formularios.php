@@ -4,10 +4,11 @@ require_once "../functions/funciones_usuario.php";
 //Verificamos que los datos han sido enviados por POST para asegurarnos que la función se ejecutará una vez el formulario haya sido enviado.
 if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["registro"])) {
     $registro = crearUsuario($_POST['user_name'], $_POST['email'], $_POST['contraseña'], $_POST["contraseña_verif"]);
-    if ($registro) {
+    // var_dump($registro);
+    if ($registro === true) {
         header("Location: ../pages/index.php?registro=correcto");
     } else {
-        header("Location: ../pages/registro.php?error=registro");
+        header("Location: ../pages/registro.php?error=" . $registro);
     }
 }
 

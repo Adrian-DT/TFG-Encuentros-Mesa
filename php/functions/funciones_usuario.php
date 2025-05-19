@@ -6,7 +6,7 @@ require_once "../functions/PHPMailer.php";
 function crearUsuario($user_name, $email, $contraseña, $contraseña_verif) {
     try {
         // Si la contraseña introducida dos veces no es la misma, devolvemos false
-        if ($contraseña != $contraseña_verif) return FALSE;
+        if ($contraseña != $contraseña_verif) return "Las contraseñas no coinciden.";
         //Nos conectamos a la base de datos
         $db = conectar();
         $db->beginTransaction();
@@ -18,7 +18,7 @@ function crearUsuario($user_name, $email, $contraseña, $contraseña_verif) {
         if (!$insert) {
             $db->rollBack();
             $db = desconectar();
-            return FALSE;
+            return "Usuario o email ya registrados.";
         } else {
             $envio = enviar_correo($email, "nuevo_usuario");
             if (!$envio) {
@@ -32,7 +32,7 @@ function crearUsuario($user_name, $email, $contraseña, $contraseña_verif) {
             return TRUE;
         }
     } catch (PDOException $e) {
-        echo "Error, el usuario no se ha podido crear " . $e->getMessage();
+        return "Usuario o email ya registrados.";
     }
 }
 
