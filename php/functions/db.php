@@ -115,7 +115,7 @@ function mostrar_partidas_disponiblesV2()
                             JOIN participaciones AS d ON a.id = d.id_partida 
                             JOIN usuarios AS u ON d.id_usuario = u.id  
                             LEFT JOIN comentario AS e ON d.id = e.participacion -- Usamos LEFT JOIN para no perder participaciones sin comentarios
-                            WHERE a.fecha_partida >= CURDATE() -- Con CURDATE solo hacemos referencia a la fecha y no a la hora
+                            WHERE a.fecha_partida >= NOW()
                             GROUP BY a.id
                             ORDER BY a.fecha_partida ASC;");
         $result = $result->fetchAll(PDO::FETCH_ASSOC);
@@ -158,7 +158,7 @@ function mostrar_partidas_pendientes($id_usuario)
                             JOIN participaciones AS d ON a.id = d.id_partida 
                             JOIN usuarios AS u ON d.id_usuario = u.id  
                             LEFT JOIN comentario AS e ON d.id = e.participacion -- Usamos LEFT JOIN para no perder participaciones sin comentarios
-                            WHERE a.fecha_partida >= CURDATE() -- Con CURDATE solo hacemos referencia a la fecha actual y no a la hora
+                            WHERE a.fecha_partida >= NOW()
                             AND EXISTS (
                                 SELECT 1
                                 FROM participaciones AS d2
@@ -476,7 +476,7 @@ function contar_partidas_usuario_vigentes($id_usuario)
             FROM participaciones 
             JOIN partidas ON participaciones.id_partida = partidas.id
             WHERE participaciones.id_usuario = ? 
-            AND partidas.fecha_partida >= CURDATE()
+            AND partidas.fecha_partida >= NOW()
         ");
 
         // Ejecutar con parámetros seguros
