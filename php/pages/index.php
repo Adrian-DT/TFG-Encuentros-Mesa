@@ -95,6 +95,12 @@ require_once "../functions/db.php";
             echo "<p>Cuenta eliminada correctamente.</p>";
             echo "</div>";
         }
+        if (isset($_GET["registro"]) && $_GET["registro"] == "correcto") {
+            echo "<div class='notificacion'>
+                        <div class='aspa'>x</div>";
+            echo "<p>Te has registrado correctamente.</p>";
+            echo "</div>";
+        }
         ?>
     </header>
     <main id="index-main" class="container-fluid pb-5">
