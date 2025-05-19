@@ -111,7 +111,6 @@ vendor/ # Dependencias instaladas vía Composer
 - [LinkedIn](https://www.linkedin.com/in/adriandt) — `@adriandt`  
 - [GitHub](https://github.com/Adrian-DT) — `Adrian-DT`  
 - ✉️ Email: adriandt_work@outlook.com  
-  `index.php:146-148`
 
 ---
 
