@@ -110,7 +110,7 @@ vendor/ # Dependencias instaladas vía Composer
 📬 Contacto:  
 - [LinkedIn](https://www.linkedin.com/in/adriandt) — `@adriandt`  
 - [GitHub](https://github.com/Adrian-DT) — `Adrian-DT`  
-- ✉️ Email: adriandt_work@outlook.com  
+- [Email](mailto:adriandt_work@outlook.com)  
 
 ---
 
