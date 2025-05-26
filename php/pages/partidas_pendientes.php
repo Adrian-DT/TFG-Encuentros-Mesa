@@ -230,8 +230,8 @@ if (!isset($_SESSION["id"])) {
                                                     <td><a class='text-primary tooltip-trigger' data-bs-toggle='tooltip' title='Información de la partida' href='../pages/info_partida.php?info=" . $partida["id_partida"] . "'><i class='bi bi-info-square text-info'></i></a></td>";
                                                     } else if ($_SESSION["id"] != $partida["id_creador"] && $existe == TRUE) {
                                                         echo "<td>" . $partida["num_participantes"] .  "/" . $partida["max_j"] . "</td>
-                                                    <td><i class='bi bi-check-square text-success'></i></td>
-                                                    <td><a class='text-primary tooltip-trigger' data-bs-toggle='tooltip' title='Salir de la partida' href='../functions/controlador_formularios.php?no_participar=" . $partida["id_partida"] . "&pagina=pendiente'><i class='bi bi-arrow-bar-left text-danger'></i></a></td></td>
+                                                    <td><a class='tooltip-trigger' data-bs-toggle='tooltip' title='¡Ya estás en la partida!'><i class='bi bi-check-square text-success'></i></a></td>
+                                                    <td><a class='text-primary tooltip-trigger' data-bs-toggle='tooltip' title='Salir de la partida' href='../functions/controlador_formularios.php?no_participar=" . $partida["id_partida"] . "&pagina=pendiente'><i class='bi bi-arrow-bar-left text-danger'></i></a></td>
                                                     <td><a class='text-primary tooltip-trigger' data-bs-toggle='tooltip' title='Información de la partida' href='../pages/info_partida.php?info=" . $partida["id_partida"] . "'><i class='bi bi-info-square text-info'></i></a></td>";
                                                     } else if ($_SESSION["id"] == $partida["id_creador"]) {
                                                         echo "<td>" . $partida["num_participantes"] .  "/" . $partida["max_j"] . "</td>  
