@@ -219,7 +219,7 @@ require_once "../functions/funciones_usuario.php";
                                 </div>
 
                                 <!-- Mostrar tabla con todas las partidas del juego -->
-                                <table class='table table-hover table-sm mx-auto w-100 h-100 mb-5' id="<?php echo $juegoId; ?>" style='max-width: 900px;'>
+                                <table class='table table-hover align-middle table-sm mx-auto w-100 h-100 mb-5' id="<?php echo $juegoId; ?>" style='max-width: 900px;'>
                                     <thead>
                                         <tr>
                                             <th>Game Master</th>
