@@ -4,7 +4,6 @@ require_once "../functions/funciones_usuario.php";
 //Verificamos que los datos han sido enviados por POST para asegurarnos que la función se ejecutará una vez el formulario haya sido enviado.
 if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["registro"])) {
     $registro = crearUsuario($_POST['user_name'], $_POST['email'], $_POST['contraseña'], $_POST["contraseña_verif"]);
-    // var_dump($registro);
     if ($registro === true) {
         header("Location: ../pages/index.php?registro=correcto");
     } else {
@@ -14,11 +13,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["registro"])) {
 
 //Verificamos que los datos han sido enviados por POST para asegurarnos que la función se ejecutará una vez el formulario haya sido enviado.
 if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["login"])) {
-    $registro = login($_POST['email'], $_POST['contraseña']);
-    if ($registro) {
-        header("Location: ../pages/index.php?inicio=correcto");
+    $login = login($_POST['email'], $_POST['contraseña']);
+    if ($login === true) {
+        header("Location: ../pages/index.php?login=correcto");
     } else {
-        header("Location: ../pages/login.php?inicio=error");
+        header("Location: ../pages/login.php?login=" . $login);
     }
 }
 

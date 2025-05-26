@@ -81,24 +81,25 @@ function login($email, $contraseña) {
         $consultaUsuarios = $db->prepare("SELECT * FROM usuarios WHERE email = ?");
         $consultaUsuarios->execute(array($email));
         $consultaUsuarios = $consultaUsuarios->fetch();
-        // Si la contraseña proporcionada no coincide con la hasheada en la BD, devuelvo FALSE
-        if (!password_verify($contraseña, $consultaUsuarios["contraseña"])) {
-            $db = desconectar();
-            return FALSE;
-        }
-        $_SESSION['id'] = $consultaUsuarios['id'];
-        $_SESSION['user_name'] = $consultaUsuarios['user_name'];
-        $_SESSION['email'] = $consultaUsuarios['email'];
-        $_SESSION["fecha_creacion"] = $consultaUsuarios["creacion"];
+
         if (!$consultaUsuarios) {
             $db = desconectar();
-            return FALSE;
+            return "No existe ese usuario.";
         } else {
+            // Si la contraseña proporcionada no coincide con la hasheada en la BD, devuelvo mensaje para la notificacion
+            if (!password_verify($contraseña, $consultaUsuarios["contraseña"])) {
+                $db = desconectar();
+                return "Contraseña incorrecta.";
+            }
+            $_SESSION['id'] = $consultaUsuarios['id'];
+            $_SESSION['user_name'] = $consultaUsuarios['user_name'];
+            $_SESSION['email'] = $consultaUsuarios['email'];
+            $_SESSION["fecha_creacion"] = $consultaUsuarios["creacion"];
             $db = desconectar();
             return TRUE;
         }
     } catch (PDOException $e) {
-        echo "Error, El usuario no existe: " . $e->getMessage();
+        echo "El usuario no existe.";
     }
 }
 
