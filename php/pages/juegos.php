@@ -110,7 +110,7 @@ require_once "../functions/db.php";
                         // Verificar si el juego actual está en los más jugados
                         $es_mas_jugado = in_array($juego["id"], $mas_partidas_ids);
 
-                        // Generar la card una sola vez por juego
+                        // Mediante un operador tenrario aplico la clase de es_mas_jugado para darle un estilo específico
                         echo "<a id='a-juego' class='card col " . ($es_mas_jugado ? 'mas-jugado' : '') . "' href='../pages/partidas_disponibles.php?id_juego=" . $juego["id"] . "'>";
                         echo "<div class='h-100'>";
 
