@@ -87,8 +87,8 @@ if (!isset($_SESSION["id"])) {
         </nav>
         <div class="container-fluid mt-3 pt-5 pb-2 contHeader">
             <div>
-                <h1 class="pt-3 text-light">Registros de Mesa</h1>
-                <p class="text-light">Registra las partidas con tus amigos.</p>
+                <h1 class="pt-3 text-light">Ajustes de Mi Cuenta</h1>
+                <p class="text-light">Modifica los datos de tu cuenta.</p>
             </div>
         </div>
         <?php
