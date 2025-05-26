@@ -84,7 +84,7 @@ function login($email, $contraseña) {
 
         if (!$consultaUsuarios) {
             $db = desconectar();
-            return "No existe ese usuario.";
+            return "El usuario no existe, compruebe el email.";
         } else {
             // Si la contraseña proporcionada no coincide con la hasheada en la BD, devuelvo mensaje para la notificacion
             if (!password_verify($contraseña, $consultaUsuarios["contraseña"])) {
