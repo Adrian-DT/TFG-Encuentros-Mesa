@@ -115,7 +115,7 @@ foreach ($partidas as $partida) {
                     <div class="col-md-3 col-12">
                         <label for="id_juego" class="form-label">Nombre de Juego:</label>
                         <select class="form-select w-100" aria-label="Default select example" id="id_juego" name="id_juego">
-                            <option value="<?php echo $id_juego ?>" selected><?php echo $nombre_juego_partida ?></option>
+                            <option value="<?php echo $id_juego ?>" selected><?php echo htmlspecialchars($nombre_juego_partida) ?></option>
                             <?php
                             $juegos = mostrar_juegos();
                             foreach ($juegos as $juego) {
@@ -131,7 +131,7 @@ foreach ($partidas as $partida) {
                 <div class="row g-3 justify-content-center">
                     <div class="col-md-3 col-12">
                         <label for="lugar" class="form-label">Lugar:</label>
-                        <input type="text" class="form-control w-100" id="lugar" name="lugar" placeholder="Indica el lugar" value="<?php echo $lugar ?>">
+                        <input type="text" class="form-control w-100" id="lugar" name="lugar" placeholder="Indica el lugar" value="<?php echo htmlspecialchars($lugar) ?>" required>
                     </div>
                     <div class="col-md-3 col-12">
                         <label for="fecha_partida" class="form-label">Fecha de partida:</label>
@@ -143,7 +143,7 @@ foreach ($partidas as $partida) {
                 <div class="row g-3 justify-content-center">
                     <div class="col-md-6 col-12">
                         <label for="comentarios" class="form-label">Comentarios para los participantes</label>
-                        <textarea class="form-control w-100" rows="5" id="comentarios" name="comentarios" placeholder="Deje aquí su comentario..."><?php echo $comentarios ?></textarea>
+                        <textarea class="form-control w-100" rows="5" id="comentarios" name="comentarios" placeholder="Deje aquí su comentario..."><?php echo htmlspecialchars($comentarios) ?></textarea>
                     </div>
                 </div>
                 <input type="text" name="id_partida" value="<?php echo $id_partida ?>" hidden>

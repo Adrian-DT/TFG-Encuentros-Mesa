@@ -90,6 +90,15 @@ if (!isset($_SESSION["id"])) {
             <h1 class="pt-3 text-light">Registros de Mesa</h1>
             <p class="text-light">Registra las partidas con tus amigos.</p>
         </div>
+        <?php
+        if (isset($_GET["partida"]) && $_GET["partida"] == "no_registrada") {
+        echo "<div class='notificacion'>
+            <div class='aspa'>x</div>";
+            echo "<p>No se pudo registrar la partida.</p>";
+            echo "
+        </div>";
+        }
+        ?>
     </header>
     <main class="mt-2 py-1 mb-5">
         <h1 class="text-center py-2">Registro de Partida</h1>
@@ -99,7 +108,7 @@ if (!isset($_SESSION["id"])) {
                 <div class="row g-3 justify-content-center">
                     <div class="col-md-3 col-12">
                         <label for="id_juego" class="form-label">Nombre de Juego:</label>
-                        <select class="form-select w-100" aria-label="Default select example" id="id_juego" name="id_juego">
+                        <select class="form-select w-100" aria-label="Default select example" id="id_juego" name="id_juego" required>
                             <option selected>Selecciona un juego</option>
                             <?php
                             $juegos = mostrar_juegos();
@@ -115,11 +124,11 @@ if (!isset($_SESSION["id"])) {
                 <div class="row g-3 justify-content-center">
                     <div class="col-md-3 col-12">
                         <label for="ganador" class="form-label">Lugar:</label>
-                        <input type="text" class="form-control w-100" id="ganador" name="lugar" placeholder="Indica el lugar">
+                        <input type="text" class="form-control w-100" id="ganador" name="lugar" placeholder="Indica el lugar" required>
                     </div>
                     <div class="col-md-3 col-12">
                         <label for="fecha_partida" class="form-label">Fecha de partida:</label>
-                        <input type="datetime-local" class="form-control w-100" id="fecha_partida" name="fecha_partida">
+                        <input type="datetime-local" class="form-control w-100" id="fecha_partida" name="fecha_partida" required>
                     </div>
                 </div>
 

@@ -144,11 +144,11 @@ require_once "../functions/db.php";
                                     echo "<p class='mb-3 partidasCard'><small>" . count($partidas) . " partidas actualmente.</small></p>";
                                 }
                             }
-                        echo "<p class='card-text flex-grow-1 mb-3 text-start'>" . $juego["descripcion"] . "</p>";
+                        echo "<p class='card-text flex-grow-1 mb-3 text-start'>" . htmlspecialchars($juego["descripcion"]) . "</p>";
                         echo "<div class='mt-auto'>";
                         echo "<div class='text-muted mb-2'><small>Jugadores: " . $juego["min_jugadores"] . " - " . $juego["max_jugadores"] . "</small></div>";
                         echo "<div class='text-muted mb-2'><small>Duración: " . $juego["duracion"] . "</small></div>";
-                        echo "<div class='text-muted'><small>Categoría: " . $juego["categoria"] . "</small></div>";
+                        echo "<div class='text-muted'><small>Categoría: " . htmlspecialchars($juego["categoria"]) . "</small></div>";
                         echo "</div></div></div></a>";
                     }
                 }
