@@ -16,9 +16,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["registro"])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["login"])) {
     $registro = login($_POST['email'], $_POST['contraseña']);
     if ($registro) {
-        header("Location: ../pages/index.php?registro=correcto");
+        header("Location: ../pages/index.php?inicio=correcto");
     } else {
-        header("Location: ../pages/login.php?error=registro");
+        header("Location: ../pages/login.php?inicio=error");
     }
 }
 
