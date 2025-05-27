@@ -282,7 +282,6 @@ function registrarPartida($id_creador, $id_juego, $lugar, $fecha_partida, $comen
     }
 }
 
-// TODO NO FUNCIONA, REVISAR
 // Función para editar una partida existente
 function editarPartida($id_partida, $id_juego, $fecha_partida, $comentarios, $lugar) {
     // Contemplamos que la partida no pueda ser con una fecha posterior a la actual, ya que no podría haberse jugado
