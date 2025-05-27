@@ -113,17 +113,9 @@ foreach ($partidas as $partida) {
                 <!-- Primera fila -->
                 <div class="row g-3 justify-content-center">
                     <div class="col-md-3 col-12">
-                        <label for="id_juego" class="form-label">Nombre de Juego:</label>
-                        <select class="form-select w-100" aria-label="Default select example" id="id_juego" name="id_juego">
-                            <option value="<?php echo $id_juego ?>" selected><?php echo htmlspecialchars($nombre_juego_partida) ?></option>
-                            <?php
-                            $juegos = mostrar_juegos();
-                            foreach ($juegos as $juego) {
-                                // Genero las options excluyendo la seleccionada por defecto
-                                if ($juego["nombre"] != $nombre_juego_partida) echo "<option value='" . $juego["id"] . "'>" . $juego["nombre"] . "</option>";
-                            }
-                            ?>
-                        </select>
+                        <input type="text" aria-label="Default select example" id="id_juego" name="id_juego" value="<?php echo $id_juego ?>" required hidden>
+                        <label for="lugar" class="form-label">Nombre de Juego:</label>
+                        <input type="text" class="form-control w-100" id="nombre_juego" name="nombre_juego" value="<?php echo htmlspecialchars($nombre_juego_partida) ?>" disabled>
                     </div>
                 </div>
 
