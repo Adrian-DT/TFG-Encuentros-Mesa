@@ -39,34 +39,6 @@ if (isset($_SESSION["id"])) header("Location: ../pages/registro_partidas.php");
                             <a class="nav-link text-light" href="../pages/formulario_contacto.php">Contacto</a>
                         </li>
                         <?php
-                        if (isset($_SESSION["id"])) {
-                            // Mostramos la cantidad de partidas disponibles en las que estamos apuntados
-                            $partidas_pendientes = contar_partidas_usuario_vigentes($_SESSION["id"]);
-                            echo "
-                                <li class='nav-item'>
-                                    <a class='nav-link text-light' href='../pages/registro_partidas.php'>Registrar partida</a>
-                                </li>
-                                <li class='nav-item dropdown'>
-                                    <a class='nav-link dropdown-toggle text-light' href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
-                                        " . ucfirst($_SESSION["user_name"]) . "
-                                    </a>
-                                    <ul class='dropdown-menu'> ";
-                            if ($partidas_pendientes > 0) echo "<li class='nav-item'>
-                                    <a class='dropdown-item' href='../pages/partidas_pendientes.php'>Partidas Pendientes</a>
-                                </li>";
-                            echo "<li><a class='dropdown-item' href='../pages/historial_partidas.php'>Historial</a></li>
-                                        <li><a class='dropdown-item' href='../pages/micuenta.php'>Ajustes</a></li>
-                                        <li><a class='dropdown-item' href='../functions/logout.php'>Cerrar sesión</a></li>
-                                    </ul>
-                                </li>";
-                            // Mostramos la cantidad de partidas disponibles en las que estamos apuntados
-                            // $partidas_pendientes = contar_partidas_usuario_vigentes($_SESSION["id"]);
-                            if ($partidas_pendientes > 0) {
-                                echo "<li class='nav-item'>
-                                    <a class='nav-link text-light' href='../pages/partidas_pendientes.php'>" . $partidas_pendientes . " partidas pendientes.</a>
-                                </li>";
-                            }
-                        } else {
                             echo "
                                 <li class='nav-item dropdown'>
                                     <a class='nav-link dropdown-toggle text-light' href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
@@ -77,7 +49,6 @@ if (isset($_SESSION["id"])) header("Location: ../pages/registro_partidas.php");
                                         <li><a class='dropdown-item' href='../pages/registro.php'>Registrarse</a></li>
                                     </ul>
                                 </li>";
-                        }
                         ?>
                     </ul>
                 </div>
@@ -88,12 +59,13 @@ if (isset($_SESSION["id"])) header("Location: ../pages/registro_partidas.php");
             <p class="text-light">Crea tu cuenta para empezar a registrar tus partidas.</p>
         </div>
         <?php
+        // Controlamos la existencia de un $_GET["error"] para mostrar el mensaje de error mediante una notificacion en pantalla
         if (isset($_GET["error"])) {
-        echo "<div class='notificacion'>
-            <div class='aspa'>x</div>";
-            echo "<p>" . $_GET["error"] . "</p>";
-            echo "
-        </div>";
+            echo "<div class='notificacion'>
+                <div class='aspa'>x</div>";
+                echo "<p>" . $_GET["error"] . "</p>";
+                echo "
+            </div>";
         }
         ?>
     </header>

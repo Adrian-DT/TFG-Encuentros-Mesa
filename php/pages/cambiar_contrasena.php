@@ -62,7 +62,6 @@ if (!isset($_SESSION["email_cambio_contraseña"])) {
                                     </ul>
                                 </li>";
                             // Mostramos la cantidad de partidas disponibles en las que estamos apuntados
-                            // $partidas_pendientes = contar_partidas_usuario_vigentes($_SESSION["id"]);
                             if ($partidas_pendientes > 0) {
                                 echo "<li class='nav-item'>
                                     <a class='nav-link text-light' href='../pages/partidas_pendientes.php'>" . $partidas_pendientes . " partidas pendientes.</a>
@@ -92,7 +91,7 @@ if (!isset($_SESSION["email_cambio_contraseña"])) {
     </header>
     <main class="mt-2 py-2">
         <?php
-
+        // Gestión de lo mostrado en la página en función de si ya has reestablecido la contraseña o estas por hacerlo
         if (isset($_GET["contraseña"])) {
             echo "<h1 class='text-center py-2'>Nueva contraseña establecida con éxito.</h1>
             <div class='container d-flex flex-column text-center justify-content-center align-items-center'>

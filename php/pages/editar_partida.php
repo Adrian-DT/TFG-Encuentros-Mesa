@@ -113,8 +113,10 @@ foreach ($partidas as $partida) {
                 <!-- Primera fila -->
                 <div class="row g-3 justify-content-center">
                     <div class="col-md-3 col-12">
+                        <!-- Mediante un input oculto enviamos el id del juego de la partida que se va a editar -->
                         <input type="text" aria-label="Default select example" id="id_juego" name="id_juego" value="<?php echo $id_juego ?>" required hidden>
                         <label for="lugar" class="form-label">Nombre de Juego:</label>
+                        <!-- Evitamos modificar el juego en la partida, puesto que podría haber un conflicto si ya existen más usuarios apuntados que permite el jeugo actual, y se cambia a uno de menos máximo de jugadores, para ello se deberá crear otra partida, puesto que la gente apuntada se apunta a ese juego -->
                         <input type="text" class="form-control w-100" id="nombre_juego" name="nombre_juego" value="<?php echo htmlspecialchars($nombre_juego_partida) ?>" disabled>
                     </div>
                 </div>

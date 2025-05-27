@@ -63,7 +63,6 @@ if (!isset($_SESSION["id"])) {
                                     </ul>
                                 </li>";
                             // Mostramos la cantidad de partidas disponibles en las que estamos apuntados
-                            // $partidas_pendientes = contar_partidas_usuario_vigentes($_SESSION["id"]);
                             if ($partidas_pendientes > 0) {
                                 echo "<li class='nav-item'>
                                     <a class='nav-link text-light' href='../pages/partidas_pendientes.php'>" . $partidas_pendientes . " partidas pendientes.</a>
@@ -91,6 +90,7 @@ if (!isset($_SESSION["id"])) {
             <p class="text-light">Aquí encontrarás las próximas partidas que te esperan.</p>
         </div>
         <?php
+        // Bloque de código para mostrar un mensaje de notificación en función del tipo de valor de $_GET["partida"]
         if (isset($_GET["partida"])) {
             echo "<div class='notificacion'>
                         <div class='aspa'>x</div>";
@@ -223,7 +223,7 @@ if (!isset($_SESSION["id"])) {
                                                 } else {
                                                     // Compruebo si existe el usuario participando en esa partida
                                                     $existe = user_partida_exist($partida["id_partida"], $_SESSION["id"]);
-                                                    // Si la partida no es tuya, te muextra la opción de unirte, si es tuya, la opción de editar o eliminar
+                                                    // Si la partida no es tuya, te muextra la opción de unirte, si es tuya, la opción de editar o eliminar y si no es tuya y no estás apuntado y esta llena, te muestro "Partida llena" e inhabilito que puedas unirte
                                                     if ($_SESSION["id"] != $partida["id_creador"] && $existe == FALSE && $partida["num_participantes"] < $partida["max_j"]) {
                                                         echo "<td>" . $partida["num_participantes"] .  "/" . $partida["max_j"] . "</td>
                                                     <td><a class='text-primary tooltip-trigger' data-bs-toggle='tooltip' title='¡Únete a la partida!' href='../functions/controlador_formularios.php?participar=" . $partida["id_partida"] . "&pagina=pendiente'><i class='bi bi-person-plus'></i></a></td>

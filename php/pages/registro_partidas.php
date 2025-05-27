@@ -91,18 +91,20 @@ if (!isset($_SESSION["id"])) {
             <p class="text-light">Registra las partidas con tus amigos.</p>
         </div>
         <?php
+        // Controlamos la existencia de un $_GET["partida"] y con valor no_registrada para mostrar el mensaje de error mediante una notificacion en pantalla
         if (isset($_GET["partida"]) && $_GET["partida"] == "no_registrada") {
-        echo "<div class='notificacion'>
-            <div class='aspa'>x</div>";
-            echo "<p>No se pudo registrar la partida.</p>";
-            echo "
-        </div>";
+            echo "<div class='notificacion'>
+                <div class='aspa'>x</div>";
+                echo "<p>No se pudo registrar la partida.</p>";
+                echo "
+            </div>";
         }
         ?>
     </header>
     <main class="mt-2 py-1 mb-5">
         <h1 class="text-center py-2">Registro de Partida</h1>
         <div class="container-fluid d-flex text-center justify-content-center">
+            <!-- Formulario para registrar una partida -->
             <form action="../functions/controlador_formularios.php" method="POST" class="container w-75 mx-auto pb-2">
                 <!-- Primera fila -->
                 <div class="row g-3 justify-content-center">

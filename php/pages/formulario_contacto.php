@@ -59,7 +59,6 @@ require_once "../functions/db.php";
                                     </ul>
                                 </li>";
                             // Mostramos la cantidad de partidas disponibles en las que estamos apuntados
-                            // $partidas_pendientes = contar_partidas_usuario_vigentes($_SESSION["id"]);
                             if ($partidas_pendientes > 0) {
                                 echo "<li class='nav-item'>
                                     <a class='nav-link text-light' href='../pages/partidas_pendientes.php'>" . $partidas_pendientes . " partidas pendientes.</a>

@@ -59,7 +59,6 @@ require_once "../functions/db.php";
                                     </ul>
                                 </li>";
                             // Mostramos la cantidad de partidas disponibles en las que estamos apuntados
-                            // $partidas_pendientes = contar_partidas_usuario_vigentes($_SESSION["id"]);
                             if ($partidas_pendientes > 0) {
                                 echo "<li class='nav-item'>
                                     <a class='nav-link text-light' href='../pages/partidas_pendientes.php'>" . $partidas_pendientes . " partidas pendientes.</a>
@@ -121,18 +120,16 @@ require_once "../functions/db.php";
 
                         // Resto de la card (imagen, título, descripción, etc.)
                         echo "<img src='../../img/" . $juego["id"] . ".webp' 
-                class='card-img-top img-fluid' 
-                style='height: 300px;' 
-                alt='" . $juego["nombre"] . "' 
-                loading='lazy'>";
+                                class='card-img-top img-fluid' 
+                                style='height: 300px;' 
+                                alt='" . $juego["nombre"] . "' 
+                                loading='lazy'>";
 
                         echo "<div class='card-body d-flex flex-column'>";
                         echo "<h5 class='card-title fw-bold'>" . $juego["nombre"] . "</h5>";
-
+                        // Bloque para mostrar la cantidad de partidas de las que dispone un juego
                         $historial = mostrar_partidas_disponiblesV2();
-                        if (!$historial) {
-                            echo "<h4>No hay partidas disponibles, <a href='../pages/registro_partidas.php'>añade una ahora!</a></h4>";
-                        } else {
+                        if ($historial) {
                             // Agrupar partidas por juego
                             $partidasPorJuego = [];
                             foreach ($historial as $partida) {

@@ -92,6 +92,7 @@ if (!isset($_SESSION["id"])) {
             </div>
         </div>
         <?php
+        // Bloque de código para aplicar un mensaje a la notificación en función de lo que hayamos realizado
         if (isset($_GET["cuenta"])) {
             echo "<div class='notificacion'>
                         <div class='aspa'>x</div>";

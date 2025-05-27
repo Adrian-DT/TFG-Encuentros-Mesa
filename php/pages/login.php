@@ -57,6 +57,7 @@
             <p class="text-light">Inicia sesión para disfrutar de todas las ventajas que te ofrecemos.</p>
         </div>
         <?php
+        // Bloque de código para aplicar el mensaje de error en función de los $_GET que nos hayan redirigido
         if (isset($_GET["partida"]) || isset($_GET["log"])) {
             echo "<div class='notificacion'>
                         <div class='aspa'>x</div>";

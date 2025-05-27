@@ -63,7 +63,6 @@ if (!isset($_SESSION["id"])) {
                                     </ul>
                                 </li>";
                             // Mostramos la cantidad de partidas disponibles en las que estamos apuntados
-                            // $partidas_pendientes = contar_partidas_usuario_vigentes($_SESSION["id"]);
                             if ($partidas_pendientes > 0) {
                                 echo "<li class='nav-item'>
                                     <a class='nav-link text-light' href='../pages/partidas_pendientes.php'>" . $partidas_pendientes . " partidas pendientes.</a>
@@ -105,7 +104,7 @@ if (!isset($_SESSION["id"])) {
                                 <select class="form-select" aria-label="Default select example" id="filtroJuego" name="filtroJuego">
                                     <option value="default" selected>Filtrar por juego</option>
                                     <?php
-                                    // Exluyo juegos repetidos en las partidas creadas para mostrar en el option 1 única vez cada juego del que existe registrada alguna partida para ese usuario
+                                    // Excluyo juegos repetidos en las partidas creadas para mostrar en el option 1 única vez cada juego del que existe registrada alguna partida para ese usuario
                                     $repetidos = [];
                                     $juegos = historial_partidas($_SESSION["id"]);
                                     foreach ($juegos as $juego) {
@@ -180,6 +179,7 @@ if (!isset($_SESSION["id"])) {
                                                     if ($partida["id_creador"] == $_SESSION["id"] && $fecha_partida < $fecha_actual) {
                                                         $participantes = generar_select_participantes($partida["id_partida"]);
                                                         echo "<select class='opcionesGanador' data-partida-id='" . $partida["id_partida"] . "'>";
+                                                        // Si el ganador es null, aparece como opción "Selecciona ganador" seguido de los participantes existentes
                                                         echo $partida["ganador"] === NULL
                                                             ? "<option value='default' selected>Selecciona ganador</option>"
                                                             : "<option value=" . htmlspecialchars($partida["ganador"]) . " selected>" . htmlspecialchars($partida["ganador"]) . "</option>";

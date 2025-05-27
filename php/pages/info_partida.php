@@ -2,8 +2,8 @@
 @session_start();
 require_once "../functions/db.php";
 require_once "../functions/funciones_usuario.php";
-if (!isset($_GET["info"])) header("Location: ../../partidas_disponibles.php?falta_info=partida");
-
+// He tenido que indicar la URL de esta forma porque con ruta relativa me daba error
+if (!isset($_GET["info"])) header("Location: partidas_disponibles.php?falta_info=partida");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,7 +62,6 @@ if (!isset($_GET["info"])) header("Location: ../../partidas_disponibles.php?falt
                                     </ul>
                                 </li>";
                             // Mostramos la cantidad de partidas disponibles en las que estamos apuntados
-                            // $partidas_pendientes = contar_partidas_usuario_vigentes($_SESSION["id"]);
                             if ($partidas_pendientes > 0) {
                                 echo "<li class='nav-item'>
                                     <a class='nav-link text-light' href='../pages/partidas_pendientes.php'>" . $partidas_pendientes . " partidas pendientes.</a>
@@ -94,14 +93,15 @@ if (!isset($_GET["info"])) header("Location: ../../partidas_disponibles.php?falt
         <article class="row justify-content-center">
             <section class="col-md-4 col-12 m-5 d-flex justify-content-end">
                 <?php
-                $info_partida = mostrar_info_partida($_GET["info"]);
-                $game_master = game_master($info_partida["id_creador"]);
-                $participantes = mostrar_participantes($info_partida["id_partida"]);
-                echo "<img class='w-75' id='img-juego-izq' src='../../img/" . $info_partida["id_juego"] . ".webp' alt='Imagen de " . $info_partida["nombre_juego"] . "'>";
+                    // Obtengo la información de la partida y la imagen del juego en función del valor del $_GET que nos ha redirigido
+                    $info_partida = mostrar_info_partida($_GET["info"]);
+                    $game_master = game_master($info_partida["id_creador"]);
+                    $participantes = mostrar_participantes($info_partida["id_partida"]);
+                    echo "<img class='w-75' id='img-juego-izq' src='../../img/" . $info_partida["id_juego"] . ".webp' alt='Imagen de " . $info_partida["nombre_juego"] . "'>";
                 ?>
-
             </section>
             <section class="col-md-5 col-12 text-center mt-3 d-flex flex-column align-items-start">
+                <!-- Muestro la información de la partida -->
                 <h2 class="mb-4"><?php echo $info_partida["nombre_juego"] ?></h2>
                 <p class="mb-0">Game Master</p>
                 <p><?php echo ucfirst($game_master["user_name"]) ?></p>
