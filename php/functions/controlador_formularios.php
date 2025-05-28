@@ -102,7 +102,7 @@ if (isset($_GET["eliminar"]) && isset($_SESSION["id"]) && $_SESSION["id"] == $_G
 
 // Caso para el formulario de cambiar datos de la cuenta.
 if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["modificar_datos"])) {
-    $cambiar_datos = cambiarDatos($_POST["user_name"], $_POST["email"], $_SESSION["id"]);
+    $cambiar_datos = cambiarDatos($_POST["user_name"], $_SESSION["id"]);
     // Redireccion en función de si sucedió correctamente o no.
     if ($cambiar_datos) {
         header("Location: ../pages/micuenta.php?cuenta=datos_modificados");
