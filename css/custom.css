@@ -4,15 +4,11 @@ div.contHeader{
     background-size: cover;
     position: relative;
 }
-/* Aplicamos una capa negra para que las letras sean más legibles */ 
-div.capa-negra{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.2); /* Negro con 50% de opacidad */
-    z-index: 2;
+
+.accion-col {
+    width: 90px; /* Puedes ajustar este valor */
+    text-align: center;
+    white-space: nowrap;
 }
 
 div.contHeader h1, div.contHeader p{

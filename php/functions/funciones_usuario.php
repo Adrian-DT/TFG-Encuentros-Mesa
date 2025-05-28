@@ -153,16 +153,16 @@ function bajaUsuario($id_usuario, $contraseña, $repetir_contraseña) {
 }
 
 // Función para cambiar los datos del usuario
-function cambiarDatos($user_name, $email, $id_usuario) {
+function cambiarDatos($user_name, $id_usuario) {
     try {
         $db = conectar();
 
         //Modificamos todos los datos con lo que haya en el POST
         $query = $db->prepare("UPDATE usuarios
-                            SET user_name = ?, email = ?
+                            SET user_name = ?
                             WHERE id = ?");
 
-        $resultado = $query->execute(array($user_name, $email, $id_usuario));
+        $resultado = $query->execute(array($user_name, $id_usuario));
 
         if (!$resultado) {
             $db = desconectar();
@@ -171,7 +171,6 @@ function cambiarDatos($user_name, $email, $id_usuario) {
 
         // Vuelvo a almacenar los nuevos valores en la sesión
         $_SESSION['user_name'] = $user_name;
-        $_SESSION['email'] = $email;
         
         $db = desconectar();
 
