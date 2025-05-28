@@ -25,7 +25,7 @@ require_once "../functions/funciones_usuario.php";
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav d-flex w-100 justify-content-evenly">
                         <li class="nav-item">
                             <a class="nav-link active text-light" aria-current="page" href="../pages/index.php">Inicio</a>
                         </li>
@@ -88,8 +88,8 @@ require_once "../functions/funciones_usuario.php";
         </div>
         <?php
         $juegos = mostrar_partidas_disponiblesV2();
-            // Bloque de código para mostrar un mensaje de notificación en función de si existe $_GET["id_juego"] para indicar mediante una notificación si no hay partidas disponibles desde el juego que ha accedido a la página
-            if (isset($_GET["id_juego"])) {
+        // Bloque de código para mostrar un mensaje de notificación en función de si existe $_GET["id_juego"] para indicar mediante una notificación si no hay partidas disponibles desde el juego que ha accedido a la página
+        if (isset($_GET["id_juego"])) {
             $id_juego_buscado = $_GET["id_juego"];
             $no_disponible = true; // Asumimos inicialmente que no hay partidas
 
@@ -109,8 +109,8 @@ require_once "../functions/funciones_usuario.php";
             }
         }
 
-            // Bloque de código para mostrar un mensaje de notificación en función del tipo de valor de $_GET["partida"]
-            if (isset($_GET["partida"])) {
+        // Bloque de código para mostrar un mensaje de notificación en función del tipo de valor de $_GET["partida"]
+        if (isset($_GET["partida"])) {
             echo "<div class='notificacion'>
                         <div class='aspa'>x</div>";
             switch ($_GET["partida"]) {

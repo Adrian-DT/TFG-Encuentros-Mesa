@@ -24,7 +24,7 @@ require_once "../functions/db.php";
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav d-flex w-100 justify-content-evenly">
                         <li class="nav-item">
                             <a class="nav-link active text-light" aria-current="page" href="../pages/index.php">Inicio</a>
                         </li>
@@ -49,11 +49,11 @@ require_once "../functions/db.php";
                                     <a class='nav-link dropdown-toggle text-light' href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
                                         " . ucfirst($_SESSION["user_name"]) . "
                                     </a>
-                                    <ul class='dropdown-menu'> "; 
-                                    if($partidas_pendientes > 0) echo "<li class='nav-item'>
+                                    <ul class='dropdown-menu'> ";
+                            if ($partidas_pendientes > 0) echo "<li class='nav-item'>
                                     <a class='dropdown-item' href='../pages/partidas_pendientes.php'>Partidas Pendientes</a>
                                 </li>";
-                                        echo "<li><a class='dropdown-item' href='../pages/historial_partidas.php'>Historial</a></li>
+                            echo "<li><a class='dropdown-item' href='../pages/historial_partidas.php'>Historial</a></li>
                                         <li><a class='dropdown-item' href='../pages/micuenta.php'>Ajustes</a></li>
                                         <li><a class='dropdown-item' href='../functions/logout.php'>Cerrar sesión</a></li>
                                     </ul>
@@ -127,7 +127,7 @@ require_once "../functions/db.php";
                         <button type="submit" class="btn btn-success" name="contacto">Enviar</button>
                     </div>
                 </div>
-        </form>
+            </form>
         </div>
     </main>
     <footer class="bg-dark mb-0 mt-3 fixed-bottom">

@@ -24,7 +24,7 @@ require_once "../functions/db.php";
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav d-flex w-100 justify-content-evenly">
                         <li class="nav-item">
                             <a class="nav-link active text-light" aria-current="page" href="../pages/index.php">Inicio</a>
                         </li>
@@ -137,19 +137,19 @@ require_once "../functions/db.php";
                                 $partidasPorJuego[$juegoId][] = $partida; // Agrupa partidas por id_juego
                             }
                             foreach ($partidasPorJuego as $juegoId => $partidas) {
-                                if($juegoId == $juego["id"]) {
+                                if ($juegoId == $juego["id"]) {
                                     echo "<p class='mb-3 partidasCard'><small>" . count($partidas) . " partidas actualmente.</small></p>";
                                 }
                             }
-                        echo "<p class='card-text flex-grow-1 mb-3 text-start'>" . htmlspecialchars($juego["descripcion"]) . "</p>";
-                        echo "<div class='mt-auto'>";
-                        echo "<div class='text-muted mb-2'><small>Jugadores: " . $juego["min_jugadores"] . " - " . $juego["max_jugadores"] . "</small></div>";
-                        echo "<div class='text-muted mb-2'><small>Duración: " . $juego["duracion"] . "</small></div>";
-                        echo "<div class='text-muted'><small>Categoría: " . htmlspecialchars($juego["categoria"]) . "</small></div>";
-                        echo "</div></div></div></a>";
+                            echo "<p class='card-text flex-grow-1 mb-3 text-start'>" . htmlspecialchars($juego["descripcion"]) . "</p>";
+                            echo "<div class='mt-auto'>";
+                            echo "<div class='text-muted mb-2'><small>Jugadores: " . $juego["min_jugadores"] . " - " . $juego["max_jugadores"] . "</small></div>";
+                            echo "<div class='text-muted mb-2'><small>Duración: " . $juego["duracion"] . "</small></div>";
+                            echo "<div class='text-muted'><small>Categoría: " . htmlspecialchars($juego["categoria"]) . "</small></div>";
+                            echo "</div></div></div></a>";
+                        }
                     }
                 }
-            }
                 ?>
             </div>
         </div>

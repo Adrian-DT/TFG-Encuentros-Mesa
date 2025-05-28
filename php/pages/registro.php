@@ -25,7 +25,7 @@ if (isset($_SESSION["id"])) header("Location: ../pages/registro_partidas.php");
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav d-flex w-100 justify-content-evenly">
                         <li class="nav-item">
                             <a class="nav-link active text-light" aria-current="page" href="../pages/index.php">Inicio</a>
                         </li>
@@ -39,7 +39,7 @@ if (isset($_SESSION["id"])) header("Location: ../pages/registro_partidas.php");
                             <a class="nav-link text-light" href="../pages/formulario_contacto.php">Contacto</a>
                         </li>
                         <?php
-                            echo "
+                        echo "
                                 <li class='nav-item dropdown'>
                                     <a class='nav-link dropdown-toggle text-light' href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
                                         Entrar
@@ -63,8 +63,8 @@ if (isset($_SESSION["id"])) header("Location: ../pages/registro_partidas.php");
         if (isset($_GET["error"])) {
             echo "<div class='notificacion'>
                 <div class='aspa'>x</div>";
-                echo "<p>" . $_GET["error"] . "</p>";
-                echo "
+            echo "<p>" . $_GET["error"] . "</p>";
+            echo "
             </div>";
         }
         ?>

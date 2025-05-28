@@ -145,7 +145,7 @@ header div.notificacion{
     position: absolute;
     z-index: 2;
     top: 15%;
-    left: 80%;
+    right: 20%;
     min-width: 200px;
     height: 90px;
     border: 2px white solid;

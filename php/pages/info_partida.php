@@ -27,7 +27,7 @@ if (!isset($_GET["info"])) header("Location: partidas_disponibles.php?falta_info
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav d-flex w-100 justify-content-evenly">
                         <li class="nav-item">
                             <a class="nav-link active text-light" aria-current="page" href="../pages/index.php">Inicio</a>
                         </li>
@@ -93,11 +93,11 @@ if (!isset($_GET["info"])) header("Location: partidas_disponibles.php?falta_info
         <article class="row justify-content-center">
             <section class="col-md-4 col-12 m-5 d-flex justify-content-end">
                 <?php
-                    // Obtengo la información de la partida y la imagen del juego en función del valor del $_GET que nos ha redirigido
-                    $info_partida = mostrar_info_partida($_GET["info"]);
-                    $game_master = game_master($info_partida["id_creador"]);
-                    $participantes = mostrar_participantes($info_partida["id_partida"]);
-                    echo "<img class='w-75' id='img-juego-izq' src='../../img/" . $info_partida["id_juego"] . ".webp' alt='Imagen de " . $info_partida["nombre_juego"] . "'>";
+                // Obtengo la información de la partida y la imagen del juego en función del valor del $_GET que nos ha redirigido
+                $info_partida = mostrar_info_partida($_GET["info"]);
+                $game_master = game_master($info_partida["id_creador"]);
+                $participantes = mostrar_participantes($info_partida["id_partida"]);
+                echo "<img class='w-75' id='img-juego-izq' src='../../img/" . $info_partida["id_juego"] . ".webp' alt='Imagen de " . $info_partida["nombre_juego"] . "'>";
                 ?>
             </section>
             <section class="col-md-5 col-12 text-center mt-3 d-flex flex-column align-items-start">
