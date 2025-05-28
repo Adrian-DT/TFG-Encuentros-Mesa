@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (btnHabilitarModificar.value == "Modificar datos") {
             evento.preventDefault();
             inputDatos.forEach((input, index) => {
-                if(index < inputDatos.length - 2) {
+                if(index < inputDatos.length - 3) {
                     console.log(`Input ${index + 1}:`, input);
                     // Devolvemos el borde del estilo
                     input.style.border = "solid 1px"

@@ -128,22 +128,28 @@ if (!isset($_SESSION["id"])) {
                     </h2>
                     <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body container d-flex text-center justify-content-center">
-                            <form action="../functions/controlador_formularios.php" method="POST" id="modificar_datos" class="d-flex flex-column gap-2 p-3 align-items-center">
-                                <div class="d-flex gap-3">
-                                    <div class="form-group d-flex flex-column">
+                            <form action="../functions/controlador_formularios.php" method="POST" id="modificar_datos" class="container w-75 mx-auto">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6 col-12 g-2 d-flex flex-column">
                                         <label for="user_name">User name</label>
                                         <input type="text" name="user_name" value="<?php echo $_SESSION["user_name"] ?>" disabled>
                                     </div>
-                                    <div class="form-group d-flex flex-column">
+                                    <div class="col-md-6 col-12 g-2 d-flex flex-column">
                                         <label for="email">Email</label>
                                         <input type="text" name="email" value="<?php echo $_SESSION["email"] ?>" disabled>
                                     </div>
-                                    <div class="form-group d-flex flex-column">
+                                </div>
+                                <div class="row g-2 justify-content-center">
+                                    <div class="col-md-6 col-12">
                                         <label for="fecha_creacion">Antigüedad de la cuenta</label>
                                         <input type="text" name="fecha_creacion" value="<?php echo $_SESSION["fecha_creacion"] ?>" disabled>
                                     </div>
                                 </div>
-                                <input type="submit" id="btnHabilitarDatos" class="btn btn-warning" name="modificar_datos" style="width: 200px;" value="Modificar datos">
+                                <div class="row g-2 justify-content-center">
+                                    <div class="col-md-6 col-12 mt-2">
+                                        <input type="submit" id="btnHabilitarDatos" class="btn btn-warning" name="modificar_datos" style="width: 200px;" value="Modificar datos">
+                                    </div>
+                                </div>
                             </form>
                         </div>
 
@@ -158,17 +164,17 @@ if (!isset($_SESSION["id"])) {
                     <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             <div class="accordion-body container d-flex text-center justify-content-center">
-                                <form action="../functions/controlador_formularios.php" method="POST" id="cambiar_contraseña" class="d-flex flex-column gap-2 p-3 align-items-center">
-                                    <div class="d-flex gap-3">
-                                        <div class="form-group d-flex flex-column">
+                                <form action="../functions/controlador_formularios.php" method="POST" id="cambiar_contraseña" class="container w-75 mx-auto d-flex flex-column gap-2 p-3 align-items-center">
+                                    <div class="row d-flex gap-3 justify-content-center">
+                                        <div class="form-group d-flex flex-column col-md-6 col-12">
                                             <label for="contraseña">Inserte su contraseña</label>
                                             <input type="password" name="contraseña" required>
                                         </div>
-                                        <div class="form-group d-flex flex-column">
+                                        <div class="form-group d-flex flex-column col-md-6 col-12">
                                             <label for="nueva_contraseña">Nueva contraseña</label>
                                             <input type="password" name="nueva_contraseña" required>
                                         </div>
-                                        <div class="form-group d-flex flex-column">
+                                        <div class="form-group d-flex flex-column col-md-6 col-12">
                                             <label for="confirmacion_nueva_contraseña">Repetir nueva contraseña</label>
                                             <input type="password" name="confirmacion_nueva_contraseña" required>
                                         </div>
