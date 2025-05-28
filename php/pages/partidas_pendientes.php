@@ -238,9 +238,6 @@ if (!isset($_SESSION["id"])) {
                                                     <td><a class='text-primary tooltip-trigger' data-bs-toggle='tooltip' title='Editar partida' href='../pages/editar_partida.php?id_partida=" . $partida['id_partida'] . "'><i class='bi bi-pencil-square'></i></a></td>
                                                     <td><a class='text-danger tooltip-trigger' data-bs-toggle='tooltip' title='Eliminar partida' href='../functions/controlador_formularios.php?eliminar=" . $partida['id_partida'] . "&user=" . $_SESSION["id"] . "&pagina=pendiente'><i class='bi bi-trash3'></i></a></td>
                                                     <td><a class='text-primary tooltip-trigger' data-bs-toggle='tooltip' title='Información de la partida' href='../pages/info_partida.php?info=" . $partida["id_partida"] . "'><i class='bi bi-info-square text-info'></i></a></td>";
-                                                    } else if ($partida["num_participantes"] == $partida["max_j"]) {
-                                                        echo " <td>" . $partida["num_participantes"] .  "/" . $partida["max_j"] . "</td>  
-                                                    <td class='text-success'>Partida llena</td>";
                                                     }
                                                 }
                                                 ?>
