@@ -98,29 +98,36 @@ if (!isset($_SESSION["id"])) {
             <p id="encontrados" class="text-center mt-2"></p>
             <section class="">
                 <div class="container-fluid">
-                    <div class="container-fluid d-flex text-center justify-content-center gap-3 pb-5">
-                        <form id="dificultadForm" action="">
+                    <div class="container-fluid d-flex flex-column flex-md-row text-center justify-content-center align-items-center gap-3 pb-5">
+
+                        <form id="juego" action="">
                             <div class="form-group">
                                 <select class="form-select" aria-label="Default select example" id="filtroJuego" name="filtroJuego">
                                     <option value="default" selected>Filtrar por juego</option>
                                     <?php
-                                    // Excluyo juegos repetidos en las partidas creadas para mostrar en el option 1 única vez cada juego del que existe registrada alguna partida para ese usuario
+                                    // Exluyo juegos repetidos en las partidas creadas para mostrar en el option 1 única vez cada juego del que existe registrada alguna partida para ese usuario
                                     $repetidos = [];
-                                    $juegos = historial_partidas($_SESSION["id"]);
+                                    $juegos = mostrar_partidas_disponiblesV2();
                                     foreach ($juegos as $juego) {
                                         // Si el id del juego no se encuentra en el array de repetidos, muestro el option y lo añado al array
                                         if (!in_array($juego["id_juego"], $repetidos)) {
                                             $repetidos[] += $juego["id_juego"];
-                                            echo "<option value='" . $juego["id_juego"] . "'>" . $juego["nombre_juego"] . "</option>";
+                                            if (isset($_GET["id_juego"]) && $juego["id_juego"] == $_GET["id_juego"]) {
+                                                echo "<option value='" . $juego["id_juego"] . "' selected>" . $juego["nombre_juego"] . "</option>";
+                                            } else {
+                                                echo "<option value='" . $juego["id_juego"] . "'>" . $juego["nombre_juego"] . "</option>";
+                                            }
                                         }
                                     }
                                     ?>
                                 </select>
                             </div>
                         </form>
-                        <form class="d-flex h-25" role="search">
+
+                        <form class="d-flex" role="search">
                             <input class="form-control me-2" id="inputCriterio" name="criterio" type="search" placeholder="Buscar criterio" aria-label="Search">
                         </form>
+
                         <a href="../pages/registro_partidas.php" class="btn btn-dark px-4">Registrar partida</a>
                     </div>
                     <div id="juegos-container"
