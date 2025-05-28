@@ -1,9 +1,14 @@
 <?php
 @session_start();
 require_once "../functions/funciones_usuario.php";
-//Verificamos que los datos han sido enviados por POST para asegurarnos que la función se ejecutará una vez el formulario haya sido enviado.
+
+// Este script gestiona el control de todos los formularios y las redirecciones mediante $_GET
+
+
+//Caso del formulario de registro.
 if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["registro"])) {
     $registro = crearUsuario($_POST['user_name'], $_POST['email'], $_POST['contraseña'], $_POST["contraseña_verif"]);
+    // En caso correcto, rediriguimos al index, en caso contrario, mostramos el error que retorna la función mediante $_GET
     if ($registro === true) {
         header("Location: ../pages/index.php?registro=correcto");
     } else {
@@ -11,9 +16,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["registro"])) {
     }
 }
 
-//Verificamos que los datos han sido enviados por POST para asegurarnos que la función se ejecutará una vez el formulario haya sido enviado.
+//Caso del formulario de login.
 if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["login"])) {
     $login = login($_POST['email'], $_POST['contraseña']);
+    // En caso correcto, redirigimos a index, en caso contrario, mostramos el error que retorna la función mediante $_GET
     if ($login === true) {
         header("Location: ../pages/index.php?login=correcto");
     } else {
@@ -21,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["login"])) {
     }
 }
 
-// Control para acceder mediante el formulario de recuperación de contraseña
+// Caso del formulario de recuperación de contraseña
 if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["recuperar_contraseña"])) {
     // Comprobamos que el email existe en la base de datos
     $comprobar_email = comprobar_email($_POST["email"]);
@@ -39,10 +45,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["recuperar_contraseña
     }
 }
 
-// Establecer nueva contraseña en caso de acceder mediante la recuperación de contraseña
+// Caso del formulario de cambiar contraseña.
 if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["cambiar_contraseña"])) {
-
     $cambiar_contraseña = restablecer_contraseña($_POST['email'], $_POST["contraseña"], $_POST["repetir_contraseña"]);
+    // Redireccion en función de si sucedió correctamente o no.
     if ($cambiar_contraseña) {
         header("Location: ../pages/cambiar_contrasena.php?contraseña=cambiada");
     } else {
@@ -50,9 +56,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["cambiar_contraseña"]
     }
 }
 
-//Comprobación para el envío de correo mediante el formulario de contacto
+//Caso para el formulario de contacto.
 if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["contacto"])) {
     $contacto = enviar_correo($_POST['email'], "contacto", $_POST['nombre'], $_POST["telefono"], $_POST["comentarios"]);
+    // Redireccion en función de si sucedió correctamente o no.
     if ($contacto) {
         header("Location: ../pages/formulario_contacto.php?contacto=correcto");
     } else {
@@ -60,9 +67,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["contacto"])) {
     }
 }
 
-//Verificamos que los datos han sido enviados por POST para asegurarnos que la función se ejecutará una vez el formulario haya sido enviado.
+//Caso para el formulario de registrar una partida.
 if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["registro_partida"])) {
     $registro_partida = registrarPartida($_SESSION["id"], $_POST['id_juego'], $_POST["lugar"], $_POST['fecha_partida'], $_POST['comentarios']);
+    // Redireccion en función de si sucedió correctamente o no.
     if ($registro_partida) {
         header("Location: ../pages/partidas_disponibles.php?partida=registrada");
     } else {
@@ -70,9 +78,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["registro_partida"])) 
     }
 }
 
-// Control para editar una partida registrada
+// Caso para el formulario de editar partida.
 if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["editar_partida"])) {
     $editar_partida = editarPartida($_POST["id_partida"], $_POST['id_juego'], $_POST['fecha_partida'], $_POST['comentarios'], $_POST["lugar"]);
+    // Redireccion en función de si sucedió correctamente o no.
     if ($editar_partida) {
         header("Location: ../pages/partidas_disponibles.php?partida=editada");
     } else {
@@ -80,9 +89,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["editar_partida"])) {
     }
 }
 
-// Eliminamos un registro de partida y redirigimos con get para comprobar su ejecucción correctamente
+// Caso para el formulario de eliminar partida.
 if (isset($_GET["eliminar"]) && isset($_SESSION["id"]) && $_SESSION["id"] == $_GET["user"]) {
     $result = eliminarPartida($_GET["eliminar"]);
+    // Redireccion en función de si sucedió correctamente o no.
     if ($result) {
         header("Location: ../pages/partidas_disponibles.php?partida=eliminada");
     } else {
@@ -90,9 +100,10 @@ if (isset($_GET["eliminar"]) && isset($_SESSION["id"]) && $_SESSION["id"] == $_G
     }
 }
 
-// Control del cambio de datos de un usuario mediante el formulario
+// Caso para el formulario de cambiar datos de la cuenta.
 if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["modificar_datos"])) {
     $cambiar_datos = cambiarDatos($_POST["user_name"], $_POST["email"], $_SESSION["id"]);
+    // Redireccion en función de si sucedió correctamente o no.
     if ($cambiar_datos) {
         header("Location: ../pages/micuenta.php?cuenta=datos_modificados");
     } else {
@@ -100,9 +111,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["modificar_datos"])) {
     }
 }
 
-// Control del cambio de contraseña de un usuario mediante el formulario
+// Caso para el formulario de cambiar contraseña.
 if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["modificar_contraseña"])) {
     $cambiar_contraseña = cambiarContraseña($_SESSION["id"], $_POST["contraseña"], $_POST["nueva_contraseña"], $_POST["confirmacion_nueva_contraseña"]);
+    // Redireccion en función de si sucedió correctamente o no.
     if ($cambiar_contraseña) {
         header("Location: ../pages/micuenta.php?cuenta=contraseña_modificada");
     } else {
@@ -110,9 +122,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["modificar_contraseña
     }
 }
 
-// Control para eliminar la cuenta del usuario
+// Caso para el formulario de eliminar usuario.
 if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["eliminar_cuenta"])) {
     $baja = bajaUsuario($_SESSION["id"], $_POST["contraseña_eliminar_cuenta"], $_POST["repetir_contraseña_eliminar_cuenta"]);
+    // Redireccion en función de si sucedió correctamente o no.
     if ($baja) {
         header("Location: ../pages/index.php?cuenta=eliminada");
     } else {
@@ -120,7 +133,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["eliminar_cuenta"])) {
     }
 }
 
-// Control para unirse a una partida o participar en ella
+// Caso para unirse a una partida o participar en ella mediante $_GET
 if (isset($_GET["participar"]) && isset($_SESSION["id"])) {
     $unirse_partida = unirse_partida($_GET["participar"], $_SESSION["id"]);
     if ($unirse_partida) {
@@ -130,9 +143,11 @@ if (isset($_GET["participar"]) && isset($_SESSION["id"])) {
     }
 }
 
-// Control para salirse de una partida
+// Caso para salirse de una partida mediante $_GET
 if (isset($_GET["no_participar"]) && isset($_SESSION["id"])) {
     $salir_partida = salir_partida($_GET["no_participar"], $_SESSION["id"]);
+    // Redireccion en función de si sucedió correctamente o no.
+    // Se contempla si se ha realizado la acción desde partidas_pendientes.php o partidas_disponibles.php para redirigir desde donde se hizo
     if ($salir_partida) {
         if (isset($_GET["pagina"]) && $_GET["pagina"] == "pendiente") {
             header("Location: ../pages/partidas_pendientes.php?partida=dejar_participar");

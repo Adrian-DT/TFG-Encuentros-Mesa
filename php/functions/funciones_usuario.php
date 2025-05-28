@@ -12,7 +12,6 @@ function crearUsuario($user_name, $email, $contraseña, $contraseña_verif) {
         $db->beginTransaction();
         // Encriptar la contraseña usando el algoritmo BCRYPT
         $contraseña_hash = password_hash($contraseña, PASSWORD_BCRYPT);
-        // $insert = $db->query("INSERT INTO usuarios (user_name, email, contraseña) VALUES ('$user_name', '$email', '$contraseña_hash')");
         $insert = $db->prepare("INSERT INTO usuarios (user_name, email, contraseña) VALUES (?, ?, ?)");
         $insert->execute(array($user_name, $email, $contraseña_hash));
         if (!$insert) {
@@ -36,7 +35,7 @@ function crearUsuario($user_name, $email, $contraseña, $contraseña_verif) {
     }
 }
 
-// Función para acceder a un usuario
+// Función para comprobar un email de la base de datos
 function comprobar_email($email) {
     try {
         //Nos conectamos a la base de datos
@@ -130,6 +129,7 @@ function bajaUsuario($id_usuario, $contraseña, $repetir_contraseña) {
                 $db = desconectar();
                 return FALSE;
             } else {
+                // Enviamos correo de confirmación de baja de usuario
                 $envio = enviar_correo($consultaUsuarios["email"], "baja_usuario");
                 if (!$envio) {
                     $db->rollBack();
@@ -314,7 +314,6 @@ function editarPartida($id_partida, $id_juego, $fecha_partida, $comentarios, $lu
 
         $resultado = $query->execute(array($id_juego, $fecha_partida, $comentarios, $lugar, $id_partida));
         if (!$resultado) {
-            return "Fallo en la sentencia UPDATE";
             $db = desconectar();
             return FALSE;
         } else {

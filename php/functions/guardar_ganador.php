@@ -1,4 +1,5 @@
 <?php
+// Script para almacenar al ganador
 require_once "../functions/db.php";
 
 try {

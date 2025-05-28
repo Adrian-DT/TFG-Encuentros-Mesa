@@ -32,7 +32,7 @@ function mostrar_juegos()
         echo "Error con la base de datos: " . $e->getMessage();
     }
 }
-//Función para mostrar categorías de los juegos
+//Función para mostrar categorías de los juegos, actualmente no se utiliza, pero en un futuro podría clasificarse los juegos por categorías
 function mostrar_categorias()
 {
     try {
@@ -45,46 +45,6 @@ function mostrar_categorias()
         $db = desconectar();
         //Devolvemos el resultado de la consulta
         return $result;
-    } catch (PDOException $e) {
-        //En caso de haber algun tipo de error en la db, muestro el error
-        echo "Error con la base de datos: " . $e->getMessage();
-    }
-}
-
-//Función para mostrar historial de partidas disponibles, superiores o igual a la fecha actual
-function mostrar_partidas_disponibles()
-{
-    try {
-        $db = conectar();
-        // Realizamos una consulta que devolverla los juegos, contemplamos la ordenación descendiente para visualizar primero las nuevas insercciones
-        $result = $db->query("SELECT 
-                                    a.id AS id_partida, 
-                                    a.id_creador AS id_creador, 
-                                    u.user_name AS participantes,
-                                    a.ganador,
-                                    a.id_juego,
-                                    a.lugar,
-                                    DATE_FORMAT(a.fecha_partida,'%d/%m/%Y') AS fecha_partida,
-                                    e.texto AS comentarios,
-                                    b.nombre AS nombre_juego,
-                                    b.max_jugadores AS max_j,
-                                    b.min_jugadores AS min_j
-                                FROM partidas AS a
-                                JOIN juegos AS b ON a.id_juego = b.id
-                                JOIN participaciones AS d ON a.id = d.id_partida 
-                                JOIN usuarios AS u ON d.id_usuario = u.id  
-                                JOIN comentario AS e ON d.id = e.participacion 
-                                WHERE a.fecha_partida >= NOW()
-                                ORDER BY a.id DESC;");
-        $result = $result->fetchAll(PDO::FETCH_ASSOC);
-
-        //Cerramos la base de datos
-        $db = desconectar();
-        if ($result) {
-            //Devolvemos el resultado de la consulta
-            return $result;
-        }
-        return FALSE;
     } catch (PDOException $e) {
         //En caso de haber algun tipo de error en la db, muestro el error
         echo "Error con la base de datos: " . $e->getMessage();
@@ -341,61 +301,6 @@ function generar_select_participantes($id_partida)
     $participantes = $stmt->fetchAll(PDO::FETCH_ASSOC);
     if (!$participantes) return FALSE;
     return $participantes;
-}
-
-
-function contar_partidas_disponibles_totales()
-{
-    try {
-        // Conectar a la base de datos
-        $db = conectar();
-
-        // Consulta: Contar partidas con fecha >= hoy
-        $stmt = $db->prepare("
-            SELECT COUNT(*) AS total 
-            FROM partidas
-            WHERE fecha_partida >= NOW()
-        ");
-
-        // Ejecutar consulta
-        $stmt->execute();
-
-        // Obtener resultado
-        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-        return (int)$resultado['total'];
-    } catch (PDOException $e) {
-        // Manejar errores (opcional: registrar el error)
-        error_log("Error al contar partidas: " . $e->getMessage());
-        return 0;
-    }
-}
-// Función para contar partidas disponibles totales de un usuario
-function contar_partidas_disponibles_totales_usuario($id_usuario)
-{
-    try {
-        // Conectar a la base de datos
-        $db = conectar();
-
-        // Consulta: Contar partidas con fecha >= hoy
-        $stmt = $db->prepare("
-            SELECT COUNT(*) AS total 
-            FROM partidas AS a
-            JOIN participaciones AS d ON a.id = d.id_partida
-            WHERE fecha_partida >= CURDATE()
-            AND d.id_usuario = $id_usuario
-        ");
-
-        // Ejecutar consulta
-        $stmt->execute();
-
-        // Obtener resultado
-        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-        return (int)$resultado['total'];
-    } catch (PDOException $e) {
-        // Manejar errores (opcional: registrar el error)
-        error_log("Error al contar partidas: " . $e->getMessage());
-        return 0;
-    }
 }
 
 // Función para obtener los juegos que más partidas tienen de los usuarios

@@ -1,4 +1,5 @@
 <?php
+// Script para hacer logout
 //Nos unimos a la sesión
     session_start();
 //Vaciamos el array SESSION y accedemos al array
