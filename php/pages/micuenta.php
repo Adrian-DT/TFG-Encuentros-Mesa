@@ -140,7 +140,7 @@ if (!isset($_SESSION["id"])) {
                                     </div>
                                 </div>
                                 <div class="row g-2 justify-content-center">
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-12 g-2 d-flex flex-column">
                                         <label for="fecha_creacion">Antigüedad de la cuenta</label>
                                         <input type="text" name="fecha_creacion" value="<?php echo $_SESSION["fecha_creacion"] ?>" disabled>
                                     </div>
