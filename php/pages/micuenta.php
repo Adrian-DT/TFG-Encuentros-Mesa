@@ -164,7 +164,7 @@ if (!isset($_SESSION["id"])) {
                     <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             <div class="accordion-body container d-flex text-center justify-content-center">
-                                <form action="../functions/controlador_formularios.php" method="POST" id="cambiar_contraseña" class="container w-75 mx-auto d-flex flex-column gap-2 p-3 align-items-center">
+                                <form action="../functions/controlador_formularios.php" method="POST" id="cambiar_contraseña" class="container w-75 mx-auto d-flex flex-column gap-2 align-items-center">
                                     <div class="row d-flex gap-3 justify-content-center">
                                         <div class="form-group d-flex flex-column col-md-6 col-12">
                                             <label for="contraseña">Inserte su contraseña</label>
