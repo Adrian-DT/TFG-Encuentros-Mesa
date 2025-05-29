@@ -3,7 +3,6 @@
 function conectar()
 {
     try {
-        //TODO RECORDAR HABILITAR EL SILENCIADOR DE ERRORES
         return new PDO("mysql:dbname=encuentros_mesa;host=127.0.0.1", "root", "", [PDO::ATTR_ERRMODE => PDO::ERRMODE_SILENT]);
     } catch (PDOException $e) {
         echo "Error con la base de datos: " . $e->getMessage();
