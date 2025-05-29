@@ -85,6 +85,21 @@ require_once "../functions/db.php";
             <h1 class="pt-3 text-light">Registros de Mesa</h1>
             <p class="text-light">Contacta con nosotros sobre cualquier tipo de sugerencia o incidencia con la aplicación.</p>
         </div>
+        <?php
+        // Bloques de código para mostrar notificaciones por el envío de correo con exito
+        if (isset($_GET["contacto"]) && $_GET["contacto"] == "correcto") {
+            echo "<div class='notificacion'>
+                            <div class='aspa'>x</div>";
+            echo "<p>Contacto realizado correctamente.</p>";
+            echo "</div>";
+        }
+        if (isset($_GET["contacto"]) && $_GET["contacto"] == "error") {
+            echo "<div class='notificacion'>
+                            <div class='aspa'>x</div>";
+            echo "<p>No se pudo enviar el mensaje.</p>";
+            echo "</div>";
+        }
+        ?>
     </header>
     <main class="mt-2">
         <h1 class="text-center py-2">Formulario de Contacto</h1>
@@ -140,6 +155,7 @@ require_once "../functions/db.php";
             </div>
         </ul>
     </footer>
+    <script src="../../js/notificaciones.js"></script>
 </body>
 
 </html>
