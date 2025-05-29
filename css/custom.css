@@ -6,7 +6,7 @@ div.contHeader{
 }
 
 .accion-col {
-    width: 90px; /* Puedes ajustar este valor */
+    width: 60px; /* Puedes ajustar este valor */
     text-align: center;
     white-space: nowrap;
 }
