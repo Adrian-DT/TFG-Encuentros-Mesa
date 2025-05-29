@@ -124,8 +124,8 @@ function bajaUsuario($id_usuario, $contraseña, $repetir_contraseña) {
 
             $db->beginTransaction();
             $delete = $db->prepare("DELETE FROM usuarios WHERE id = ?");
-            $delete->execute(array($id_usuario));
-            if (!$delete) {
+            $result = $delete->execute(array($id_usuario));
+            if (!$result) {
                 $db = desconectar();
                 return FALSE;
             } else {
