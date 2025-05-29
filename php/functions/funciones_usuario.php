@@ -13,8 +13,8 @@ function crearUsuario($user_name, $email, $contraseña, $contraseña_verif) {
         // Encriptar la contraseña usando el algoritmo BCRYPT
         $contraseña_hash = password_hash($contraseña, PASSWORD_BCRYPT);
         $insert = $db->prepare("INSERT INTO usuarios (user_name, email, contraseña) VALUES (?, ?, ?)");
-        $insert->execute(array($user_name, $email, $contraseña_hash));
-        if (!$insert) {
+        $result = $insert->execute(array($user_name, $email, $contraseña_hash));
+        if (!$result) {
             $db->rollBack();
             $db = desconectar();
             return "Usuario o email ya registrados.";
