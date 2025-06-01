@@ -1,9 +1,8 @@
-```markdown
 # 🎲 Registros de Mesa (RDM)
 
 **Plataforma web para organizar encuentros de juegos de mesa entre jugadores**
 
-Una aplicación web desarrollada como Trabajo Final de Grado que permite a los usuarios registrar partidas, descubrir nuevos juegos y conectar con otros jugadores de juegos de mesa. [1](#0-0) 
+Una aplicación web desarrollada como Trabajo Final de Grado que permite a los usuarios registrar partidas, descubrir nuevos juegos y conectar con otros jugadores de juegos de mesa.
 
 ## 🚀 Características Principales
 
@@ -13,7 +12,7 @@ Una aplicación web desarrollada como Trabajo Final de Grado que permite a los u
 - **Sistema de participaciones**: Los usuarios pueden apuntarse a partidas disponibles
 - **Historial personal**: Seguimiento de partidas anteriores y estadísticas
 - **Notificaciones**: Sistema de alertas para partidas pendientes
-- **Formulario de contacto**: Comunicación directa con el administrador [2](#0-1) 
+- **Formulario de contacto**: Comunicación directa con el administrador
 
 ## 🛠️ Tecnologías Utilizadas
 
@@ -21,33 +20,11 @@ Una aplicación web desarrollada como Trabajo Final de Grado que permite a los u
 - **Base de Datos**: MySQL
 - **Frontend**: Bootstrap 5.3.2, HTML5, CSS3
 - **JavaScript**: Vanilla JS para interactividad
-- **Dependencias**: PHPMailer para envío de correos [3](#0-2) 
+- **Dependencias**: PHPMailer para envío de correos
 
 ## 📁 Estructura del Proyecto
 
-```
-TFG-Encuentros-Mesa/
-├── php/
-│   ├── pages/           # Páginas principales de la aplicación
-│   │   ├── index.php    # Página de inicio
-│   │   ├── login.php    # Autenticación
-│   │   ├── registro.php # Registro de usuarios
-│   │   ├── juegos.php   # Catálogo de juegos
-│   │   ├── partidas_disponibles.php # Lista de partidas
-│   │   ├── registro_partidas.php    # Crear nueva partida
-│   │   └── ...
-│   └── functions/       # Funciones del sistema
-│       ├── db.php       # Conexión y consultas a BD
-│       ├── funciones_usuario.php
-│       └── controlador_formularios.php
-├── css/
-│   └── custom.css       # Estilos personalizados
-├── js/
-│   ├── notificaciones.js
-│   ├── historial_partidas.js
-│   └── micuenta.js
-└── vendor/              # Dependencias de Composer
-``` [4](#0-3) 
+![Estructura del proyecto](screenshots/estructura_proyecto.jpg) 
 
 ## ⚙️ Instalación y Configuración
 
@@ -72,36 +49,36 @@ composer install
 
 3. **Configurar base de datos**
    - Crear una base de datos MySQL llamada `encuentros_mesa`
-   - Configurar las credenciales en `php/functions/db.php` [5](#0-4) 
+   - Configurar las credenciales en `php/functions/db.php`
 
 4. **Estructura de la base de datos**
    - `usuarios`: Información de los usuarios registrados
    - `juegos`: Catálogo de juegos de mesa disponibles
    - `partidas`: Partidas programadas
    - `participaciones`: Relación usuarios-partidas
-   - `comentario`: Comentarios en las partidas [6](#0-5) 
+   - `comentario`: Comentarios en las partidas
 
 ## 🎮 Funcionalidades Detalladas
 
 ### 🏠 Página Principal
-La landing page presenta la aplicación con secciones informativas y llamadas a la acción para nuevos usuarios. [7](#0-6) 
+La landing page presenta la aplicación con secciones informativas y llamadas a la acción para nuevos usuarios.
 
 ### 🎯 Gestión de Juegos
 - Visualización del catálogo completo de juegos
 - Información detallada: descripción, número de jugadores, duración
 - Indicadores de juegos más populares
-- Filtrado por categorías [8](#0-7) 
+- Filtrado por categorías
 
 ### 🎪 Sistema de Partidas
 - **Creación de partidas**: Los usuarios pueden programar nuevas sesiones de juego
 - **Participación**: Sistema de inscripción en partidas existentes
 - **Gestión temporal**: Diferenciación entre partidas futuras y pasadas
-- **Comentarios**: Posibilidad de añadir observaciones a las partidas [9](#0-8) 
+- **Comentarios**: Posibilidad de añadir observaciones a las partidas
 
 ### 👤 Perfil de Usuario
 - **Historial personal**: Seguimiento de todas las partidas del usuario
 - **Partidas pendientes**: Notificaciones de próximas sesiones
-- **Gestión de cuenta**: Modificación de datos personales [10](#0-9) 
+- **Gestión de cuenta**: Modificación de datos personales
 
 ## 📱 Capturas de Pantalla
 
@@ -136,17 +113,17 @@ La landing page presenta la aplicación con secciones informativas y llamadas a 
 ### Seguridad
 - Autenticación por sesiones PHP
 - Consultas preparadas para prevenir inyección SQL
-- Validación de formularios tanto en frontend como backend [11](#0-10) 
+- Validación de formularios tanto en frontend como backend
 
 ### Responsive Design
 - Interfaz adaptativa usando Bootstrap 5
 - Navegación móvil optimizada
-- Experiencia de usuario consistente en todos los dispositivos [12](#0-11) 
+- Experiencia de usuario consistente en todos los dispositivos
 
 ### Base de Datos
 - Diseño relacional optimizado
 - Consultas eficientes con JOINs
-- Gestión de fechas y contadores automáticos [13](#0-12) 
+- Gestión de fechas y contadores automáticos
 
 ## 🤝 Contribución
 
@@ -154,17 +131,17 @@ La landing page presenta la aplicación con secciones informativas y llamadas a 
 
 1. Reportar bugs o sugerir mejoras a través de Issues
 2. Proponer nuevos juegos mediante el formulario de contacto
-3. Hacer fork del proyecto y enviar Pull Requests [14](#0-13) 
+3. Hacer fork del proyecto y enviar Pull Requests
 
 ## 📧 Contacto
 
 - **Email**: adriandt_work@outlook.com
 - **LinkedIn**: [adriandt](https://www.linkedin.com/in/adriandt/)
-- **GitHub**: [Adrian-DT](https://github.com/Adrian-DT) [15](#0-14) 
+- **GitHub**: [Adrian-DT](https://github.com/Adrian-DT)
 
 ## 📄 Licencia
 
-Este proyecto fue desarrollado como Trabajo Final de Grado por Adrián Delgado Tuñón. [16](#0-15) 
+Este proyecto fue desarrollado como Trabajo Final de Grado por Adrián Delgado Tuñón.
 
 ## 🏆 Reconocimientos
 
@@ -173,10 +150,5 @@ Proyecto desarrollado como TFG para demostrar competencias en desarrollo web ful
 ---
 
 *¿Te gusta jugar a juegos de mesa? ¡Únete a la comunidad RDM y descubre nuevas experiencias de juego!* 🎲
-```
-
-## 📝 Notas
-
-**Registros de Mesa (RDM)** es un proyecto de Trabajo de Fin de Grado (TFG) que facilita el encuentro entre jugadores de juegos de mesa, fomentando la interacción social a través de partidas físicas organizadas desde la web.
 
 ---
